@@ -1,0 +1,253 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #3b82f6;
+    --dark-color: #1f2937;
+    --light-color: #f8fafc;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-color);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.5rem;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+.card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.btn {
+    border-radius: 0.75rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 5rem 0;
+}
+
+.stats-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.formation-field {
+    background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+    border-radius: 1rem;
+    position: relative;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+}
+
+.player-position {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid white;
+}
+
+.player-position:hover {
+    transform: scale(1.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.25rem;
+    top: 1rem;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.user-avatar-lg {
+    width: 120px;
+    height: 120px;
+    font-size: 2.5rem;
+}
+
+.badge-custom {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+}
+
+.live-indicator {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.skill-bar {
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    background: var(--secondary-color);
+    color: white;
+}
+
+.follow-btn {
+    border-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.following {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.following:hover {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+    color: white;
+}
+
+.following:hover::after {
+    content: " Dejar de seguir";
+}
+
+.following::after {
+    content: " Siguiendo";
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .floating-btn {
+        bottom: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+    }
+}
