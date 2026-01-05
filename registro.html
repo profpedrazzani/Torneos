@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - TorneoManager Pro</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <!-- Navigation (Simplified) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="index.html">
+                <i class="bi bi-trophy-fill me-2"></i>
+                TorneoManager Pro
+            </a>
+            
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">
+                    <i class="bi bi-house me-1"></i>Inicio
+                </a>
+                <a class="nav-link" href="login.html">
+                    <i class="bi bi-box-arrow-in-right me-1"></i>Iniciar Sesión
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Header -->
+                <div class="text-center mb-5">
+                    <div class="mb-3">
+                        <i class="bi bi-person-plus-fill text-primary" style="font-size: 4rem;"></i>
+                    </div>
+                    <h1 class="fw-bold mb-3">Únete a TorneoManager Pro</h1>
+                    <p class="lead text-muted">Crea tu cuenta y comienza a organizar torneos profesionales</p>
+                </div>
+
+                <!-- Progress Steps -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="step-indicator active" id="step1Indicator">
+                                    <div class="step-number">1</div>
+                                    <div class="step-title">Información Personal</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="step-indicator" id="step2Indicator">
+                                    <div class="step-number">2</div>
+                                    <div class="step-title">Cuenta y Seguridad</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="step-indicator" id="step3Indicator">
+                                    <div class="step-number">3</div>
+                                    <div class="step-title">Preferencias</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress mt-3" style="height: 4px;">
+                            <div class="progress-bar" id="progressBar" style="width: 33.33%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="card">
+                    <div class="card-body p-4">
+                        <form id="registrationForm" novalidate>
+                            <!-- Step 1: Personal Information -->
+                            <div class="step-content active" id="step1">
+                                <h4 class="mb-4">
+                                    <i class="bi bi-person me-2"></i>Información Personal
+                                </h4>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">Nombre *</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="Tu nombre" required>
+                                        <div class="invalid-feedback">El nombre es requerido.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Apellido *</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Tu apellido" required>
+                                        <div class="invalid-feedback">El apellido es requerido.</div>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mt-2">
+                                    <div class="col-md-6">
+                                        <label for="birthDate" class="form-label">Fecha de Nacimiento</label>
+                                        <input type="date" class="form-control" id="birthDate">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gender" class="form-label">Género</label>
+                                        <select class="form-select" id="gender">
+                                            <option value="">Selecciona...</option>
+                                            <option value="male">Masculino</option>
+                                            <option value="female">Femenino</option>
+                                            <option value="other">Otro</option>
+                                            <option value="prefer-not-to-say">Prefiero no decir</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3 mt-2">
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Teléfono</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-telephone"></i>
+                                            </span>
+                                            <input type="tel" class="form-control" id="phone" placeholder="+52 55 1234 5678">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="country" class="form-label">País *</label>
+                                        <select class="form-select" id="country" required>
+                                            <option value="">Selecciona tu país...</option>
+                                            <option value="mx">México</option>
+                                            <option value="us">Estados Unidos</option>
+                                            <option value="es">España</option>
+                                            <option value="ar">Argentina</option>
+                                            <option value="co">Colombia</option>
+                                            <option value="pe">Perú</option>
+                                            <option value="cl">Chile</option>
+                                            <option value="other">Otro</option>
+                                        </select>
+                                        <div class="invalid-feedback">Selecciona tu país.</div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <label for="city" class="form-label">Ciudad *</label>
+                                    <input type="text" class="form-control" id="city" placeholder="Tu ciudad" required>
+                                    <div class="invalid-feedback">La ciudad es requerida.</div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Account & Security -->
+                            <div class="step-content" id="step2">
+                                <h4 class="mb-4">
+                                    <i class="bi bi-shield-lock me-2"></i>Cuenta y Seguridad
+                                </h4>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-envelope"></i>
+                                        </span>
+                                        <input type="email" class="form-control" id="email" placeholder="tu@email.com" required>
+                                        <div class="invalid-feedback">Por favor ingresa un email válido.</div>
+                                    </div>
+                                    <div class="form-text">Este será tu nombre de usuario para iniciar sesión.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Nombre de Usuario</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">@</span>
+                                        <input type="text" class="form-control" id="username" placeholder="tu_usuario">
+                                        <button class="btn btn-outline-secondary" type="button" onclick="checkUsername()">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-text">Opcional. Si no lo especificas, usaremos tu email.</div>
+                                    <div id="usernameStatus"></div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password" placeholder="Mínimo 8 caracteres" required>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('password', 'passwordToggle')">
+                                            <i class="bi bi-eye" id="passwordToggle"></i>
+                                        </button>
+                                        <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                                    </div>
+                                    <div class="password-strength mt-2">
+                                        <div class="progress" style="height: 4px;">
+                                            <div class="progress-bar" id="passwordStrength" style="width: 0%"></div>
+                                        </div>
+                                        <small class="text-muted" id="passwordStrengthText">Ingresa una contraseña</small>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirmar Contraseña *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock-fill"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirma tu contraseña" required>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirmPassword', 'confirmPasswordToggle')">
+                                            <i class="bi bi-eye" id="confirmPasswordToggle"></i>
+                                        </button>
+                                        <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-info">
+                                    <h6 class="alert-heading">
+                                        <i class="bi bi-info-circle me-2"></i>Requisitos de Contraseña
+                                    </h6>
+                                    <ul class="mb-0 small">
+                                        <li>Mínimo 8 caracteres</li>
+                                        <li>Al menos una letra mayúscula</li>
+                                        <li>Al menos una letra minúscula</li>
+                                        <li>Al menos un número</li>
+                                        <li>Al menos un carácter especial (!@#$%^&*)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Preferences -->
+                            <div class="step-content" id="step3">
+                                <h4 class="mb-4">
+                                    <i class="bi bi-gear me-2"></i>Preferencias y Finalización
+                                </h4>
+
+                                <div class="mb-4">
+                                    <label for="accountType" class="form-label">Tipo de Cuenta *</label>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="card account-type-card" onclick="selectAccountType('organizer')">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-trophy text-primary" style="font-size: 2.5rem;"></i>
+                                                    <h5 class="mt-2">Organizador</h5>
+                                                    <p class="text-muted small mb-0">Crea y gestiona torneos</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card account-type-card" onclick="selectAccountType('team')">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-people text-success" style="font-size: 2.5rem;"></i>
+                                                    <h5 class="mt-2">Equipo</h5>
+                                                    <p class="text-muted small mb-0">Representa a tu equipo</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card account-type-card" onclick="selectAccountType('player')">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-person text-warning" style="font-size: 2.5rem;"></i>
+                                                    <h5 class="mt-2">Jugador</h5>
+                                                    <p class="text-muted small mb-0">Participa en torneos</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card account-type-card" onclick="selectAccountType('fan')">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-heart text-danger" style="font-size: 2.5rem;"></i>
+                                                    <h5 class="mt-2">Aficionado</h5>
+                                                    <p class="text-muted small mb-0">Sigue tus equipos favoritos</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="accountType" required>
+                                    <div class="invalid-feedback">Selecciona un tipo de cuenta.</div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Intereses Deportivos</h6>
+                                    <div class="row g-2">
+                                        <div class="col-auto">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="football" value="football">
+                                                <label class="form-check-label" for="football">⚽ Fútbol</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="basketball" value="basketball">
+                                                <label class="form-check-label" for="basketball">🏀 Básquetbol</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="volleyball" value="volleyball">
+                                                <label class="form-check-label" for="volleyball">🏐 Voleibol</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="tennis" value="tennis">
+                                                <label class="form-check-label" for="tennis">🎾 Tenis</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6>Notificaciones</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                        <label class="form-check-label" for="emailNotifications">
+                                            Recibir notificaciones por email
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="matchUpdates" checked>
+                                        <label class="form-check-label" for="matchUpdates">
+                                            Actualizaciones de partidos
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            Newsletter semanal
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="acceptTerms" required>
+                                        <label class="form-check-label" for="acceptTerms">
+                                            Acepto los <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a> 
+                                            y la <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Política de Privacidad</a> *
+                                        </label>
+                                        <div class="invalid-feedback">Debes aceptar los términos y condiciones.</div>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="acceptMarketing">
+                                        <label class="form-check-label" for="acceptMarketing">
+                                            Acepto recibir comunicaciones de marketing
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-secondary" id="prevBtn" onclick="previousStep()" style="display: none;">
+                                    <i class="bi bi-arrow-left me-2"></i>Anterior
+                                </button>
+                                <div class="ms-auto">
+                                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">
+                                        Siguiente <i class="bi bi-arrow-right ms-2"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                                        <span class="spinner-border spinner-border-sm me-2 d-none" id="submitSpinner"></span>
+                                        <i class="bi bi-check-circle me-2"></i>Crear Cuenta
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Social Registration Alternative -->
+                <div class="text-center mt-4">
+                    <p class="text-muted mb-3">O regístrate con:</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-outline-dark" onclick="registerWithGoogle()">
+                            <i class="bi bi-google me-2"></i>Google
+                        </button>
+                        <button class="btn btn-outline-primary" onclick="registerWithFacebook()">
+                            <i class="bi bi-facebook me-2"></i>Facebook
+                        </button>
+                        <button class="btn btn-outline-info" onclick="registerWithTwitter()">
+                            <i class="bi bi-twitter me-2"></i>Twitter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Login Link -->
+                <div class="text-center mt-4">
+                    <p class="text-muted">
+                        ¿Ya tienes cuenta? 
+                        <a href="login.html" class="text-decoration-none fw-bold">Inicia sesión aquí</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-file-text me-2"></i>Términos y Condiciones
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Aceptación de los Términos</h6>
+                    <p>Al usar TorneoManager Pro, aceptas estos términos y condiciones en su totalidad.</p>
+                    
+                    <h6>2. Uso del Servicio</h6>
+                    <p>Puedes usar nuestro servicio para organizar y participar en torneos deportivos de manera legal y ética.</p>
+                    
+                    <h6>3. Cuenta de Usuario</h6>
+                    <p>Eres responsable de mantener la confidencialidad de tu cuenta y contraseña.</p>
+                    
+                    <h6>4. Contenido</h6>
+                    <p>El contenido que publiques debe ser apropiado y no infringir derechos de terceros.</p>
+                    
+                    <h6>5. Privacidad</h6>
+                    <p>Respetamos tu privacidad según nuestra Política de Privacidad.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-shield-check me-2"></i>Política de Privacidad
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Recopilación de Información</h6>
+                    <p>Recopilamos información que nos proporcionas directamente y datos de uso de la plataforma.</p>
+                    
+                    <h6>Uso de la Información</h6>
+                    <p>Usamos tu información para proporcionar y mejorar nuestros servicios.</p>
+                    
+                    <h6>Compartir Información</h6>
+                    <p>No vendemos ni alquilamos tu información personal a terceros.</p>
+                    
+                    <h6>Seguridad</h6>
+                    <p>Implementamos medidas de seguridad para proteger tu información.</p>
+                    
+                    <h6>Contacto</h6>
+                    <p>Si tienes preguntas sobre esta política, contáctanos en privacy@torneoManager.com</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+                    <h3 class="mt-4 mb-3">¡Cuenta Creada Exitosamente!</h3>
+                    <p class="text-muted mb-4">Bienvenido a TorneoManager Pro. Tu cuenta ha sido creada y está lista para usar.</p>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="redirectToLogin()">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="redirectToHome()">
+                            <i class="bi bi-house me-2"></i>Ir al Inicio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        // Step Navigation
+        function nextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStepDisplay();
+                }
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        function updateStepDisplay() {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Show current step
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            
+            // Update step indicators
+            for (let i = 1; i <= totalSteps; i++) {
+                const indicator = document.getElementById(`step${i}Indicator`);
+                if (i <= currentStep) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            }
+            
+            // Update progress bar
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (currentStep === 1) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'inline-block';
+            }
+            
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            }
+        }
+
+        // Validation
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                    field.classList.add('is-valid');
+                }
+            });
+
+            // Special validation for step 2 (passwords)
+            if (currentStep === 2) {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    document.getElementById('confirmPassword').classList.add('is-invalid');
+                    isValid = false;
+                }
+                
+                if (!isPasswordStrong(password)) {
+                    document.getElementById('password').classList.add('is-invalid');
+                    isValid = false;
+                }
+            }
+
+            // Special validation for step 3 (account type)
+            if (currentStep === 3) {
+                const accountType = document.getElementById('accountType').value;
+                if (!accountType) {
+                    alert('Por favor selecciona un tipo de cuenta');
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        // Password Functions
+        function togglePassword(inputId, toggleId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleIcon = document.getElementById(toggleId);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'bi bi-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'bi bi-eye';
+            }
+        }
+
+        function isPasswordStrong(password) {
+            const minLength = 8;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+            const hasNumbers = /\d/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            
+            return password.length >= minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar;
+        }
+
+        function updatePasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthBar = document.getElementById('passwordStrength');
+            const strengthText = document.getElementById('passwordStrengthText');
+            
+            let strength = 0;
+            let text = 'Muy débil';
+            let color = 'bg-danger';
+            
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength++;
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    text = 'Muy débil';
+                    color = 'bg-danger';
+                    break;
+                case 2:
+                    text = 'Débil';
+                    color = 'bg-warning';
+                    break;
+                case 3:
+                    text = 'Regular';
+                    color = 'bg-info';
+                    break;
+                case 4:
+                    text = 'Fuerte';
+                    color = 'bg-success';
+                    break;
+                case 5:
+                    text = 'Muy fuerte';
+                    color = 'bg-success';
+                    break;
+            }
+            
+            strengthBar.className = `progress-bar ${color}`;
+            strengthBar.style.width = `${(strength / 5) * 100}%`;
+            strengthText.textContent = text;
+        }
+
+        // Account Type Selection
+        function selectAccountType(type) {
+            // Remove active class from all cards
+            document.querySelectorAll('.account-type-card').forEach(card => {
+                card.classList.remove('border-primary', 'bg-light');
+            });
+            
+            // Add active class to selected card
+            event.currentTarget.classList.add('border-primary', 'bg-light');
+            
+            // Set hidden input value
+            document.getElementById('accountType').value = type;
+        }
+
+        // Username Check
+        function checkUsername() {
+            const username = document.getElementById('username').value;
+            const statusDiv = document.getElementById('usernameStatus');
+            
+            if (!username) {
+                statusDiv.innerHTML = '';
+                return;
+            }
+            
+            // Simulate username check
+            setTimeout(() => {
+                const isAvailable = Math.random() > 0.3; // 70% chance of being available
+                
+                if (isAvailable) {
+                    statusDiv.innerHTML = '<small class="text-success"><i class="bi bi-check-circle me-1"></i>Nombre de usuario disponible</small>';
+                } else {
+                    statusDiv.innerHTML = '<small class="text-danger"><i class="bi bi-x-circle me-1"></i>Nombre de usuario no disponible</small>';
+                }
+            }, 500);
+        }
+
+        // Social Registration
+        function registerWithGoogle() {
+            alert('Redirigiendo a Google OAuth...\n(En una implementación real, esto abriría el flujo de registro con Google)');
+        }
+
+        function registerWithFacebook() {
+            alert('Redirigiendo a Facebook...\n(En una implementación real, esto abriría el flujo de registro con Facebook)');
+        }
+
+        function registerWithTwitter() {
+            alert('Redirigiendo a Twitter...\n(En una implementación real, esto abriría el flujo de registro con Twitter)');
+        }
+
+        // Form Submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateCurrentStep()) {
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('submitSpinner');
+            
+            submitBtn.disabled = true;
+            spinner.classList.remove('d-none');
+            
+            // Simulate registration process
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                spinner.classList.add('d-none');
+                
+                // Show success modal
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+            }, 2000);
+        });
+
+        // Redirect Functions
+        function redirectToLogin() {
+            window.location.href = 'login.html';
+        }
+
+        function redirectToHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password strength checker
+            document.getElementById('password').addEventListener('input', updatePasswordStrength);
+            
+            // Password confirmation checker
+            document.getElementById('confirmPassword').addEventListener('input', function() {
+                const password = document.getElementById('password').value;
+                const confirmPassword = this.value;
+                
+                if (confirmPassword && password !== confirmPassword) {
+                    this.setCustomValidity('Las contraseñas no coinciden');
+                    this.classList.add('is-invalid');
+                } else {
+                    this.setCustomValidity('');
+                    this.classList.remove('is-invalid');
+                    if (confirmPassword) this.classList.add('is-valid');
+                }
+            });
+            
+            // Email validation
+            document.getElementById('email').addEventListener('input', function() {
+                const email = this.value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email && !emailRegex.test(email)) {
+                    this.setCustomValidity('Por favor ingresa un email válido');
+                    this.classList.add('is-invalid');
+                } else {
+                    this.setCustomValidity('');
+                    this.classList.remove('is-invalid');
+                    if (email) this.classList.add('is-valid');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .step-indicator {
+            position: relative;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 10px;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active .step-number {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        .account-type-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .account-type-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .password-strength {
+            margin-top: 5px;
+        }
+
+        .input-group-text {
+            background-color: #f8f9fa;
+            border-right: none;
+        }
+
+        .input-group .form-control {
+            border-left: none;
+        }
+
+        .input-group .form-control:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .was-validated .form-control:invalid,
+        .was-validated .form-select:invalid {
+            border-color: #dc3545;
+        }
+
+        .was-validated .form-control:valid,
+        .was-validated .form-select:valid {
+            border-color: #198754;
+        }
+
+        .is-invalid {
+            border-color: #dc3545 !important;
+        }
+
+        .is-valid {
+            border-color: #198754 !important;
+        }
+
+        @media (max-width: 768px) {
+            .step-title {
+                font-size: 0.8rem;
+            }
+            
+            .step-number {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9826a1ff46b2a79b',t:'MTc1ODQyNjk4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

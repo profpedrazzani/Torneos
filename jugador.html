@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Martínez - TorneoManager Pro</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="index.html">
+                <i class="bi bi-trophy-fill me-2"></i>
+                TorneoManager Pro
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill me-1"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="torneos.html">
+                            <i class="bi bi-trophy me-1"></i>Torneos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="equipos.html">
+                            <i class="bi bi-people-fill me-1"></i>Equipos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="jugadores.html">
+                            <i class="bi bi-person-fill me-1"></i>Jugadores
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estadisticas.html">
+                            <i class="bi bi-graph-up me-1"></i>Estadísticas
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="registro.html">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <!-- Player Header -->
+        <div class="card mb-4">
+            <div class="card-body p-5">
+                <div class="d-flex justify-content-between align-items-start mb-4">
+                    <a href="equipo.html" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Volver al Equipo
+                    </a>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="bi bi-three-dots me-2"></i>Acciones
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="editPlayer()">
+                                <i class="bi bi-pencil me-2"></i>Editar Jugador
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="sharePlayer()">
+                                <i class="bi bi-share me-2"></i>Compartir Perfil
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#transferModal">
+                                <i class="bi bi-arrow-left-right me-2"></i>Transferir
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-warning" href="#" data-bs-toggle="modal" data-bs-target="#suspendModal">
+                                <i class="bi bi-exclamation-triangle me-2"></i>Suspender
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <div class="user-avatar" style="width: 120px; height: 120px; font-size: 3rem;">10</div>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-center mb-2">
+                            <h1 class="mb-0 me-3">Diego Martínez</h1>
+                            <i class="bi bi-star-fill text-warning fs-4" title="Jugador Destacado"></i>
+                        </div>
+                        <p class="text-muted mb-3">Delantero • 24 años • Máximo goleador del torneo</p>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="badge bg-success">Activo</span>
+                            <span class="badge bg-primary">Titular</span>
+                            <span class="badge bg-warning">Goleador</span>
+                            <span class="badge bg-info">🦅 Águilas FC</span>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-2">
+                                <small class="text-muted d-block">Equipo</small>
+                                <strong>Águilas FC</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted d-block">Posición</small>
+                                <strong>Delantero</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted d-block">Número</small>
+                                <strong>#10</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted d-block">Altura</small>
+                                <strong>1.78m</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted d-block">Peso</small>
+                                <strong>72kg</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted d-block">Pie Hábil</small>
+                                <strong>Derecho</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="card text-center border-warning">
+                    <div class="card-body">
+                        <i class="bi bi-bullseye text-warning mb-2" style="font-size: 2rem;"></i>
+                        <h3 class="mb-1 text-warning">7</h3>
+                        <small class="text-muted">Goles</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-hand-thumbs-up text-success mb-2" style="font-size: 2rem;"></i>
+                        <h3 class="mb-1">3</h3>
+                        <small class="text-muted">Asistencias</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-calendar-event text-primary mb-2" style="font-size: 2rem;"></i>
+                        <h3 class="mb-1">5</h3>
+                        <small class="text-muted">Partidos</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-clock text-info mb-2" style="font-size: 2rem;"></i>
+                        <h3 class="mb-1">450</h3>
+                        <small class="text-muted">Minutos</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player Tabs -->
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview">
+                            <i class="bi bi-person me-2"></i>Resumen
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#stats">
+                            <i class="bi bi-graph-up me-2"></i>Estadísticas
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#matches">
+                            <i class="bi bi-calendar-event me-2"></i>Partidos
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#history">
+                            <i class="bi bi-clock-history me-2"></i>Historial
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview">
+                        <div class="row g-4">
+                            <div class="col-md-8">
+                                <h6 class="mb-3">Información Personal</h6>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Nombre Completo</label>
+                                        <p class="mb-0">Diego Alejandro Martínez</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Fecha de Nacimiento</label>
+                                        <p class="mb-0">15 de Marzo, 2000</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Nacionalidad</label>
+                                        <p class="mb-0">🇲🇽 Mexicano</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Lugar de Nacimiento</label>
+                                        <p class="mb-0">Ciudad de México</p>
+                                    </div>
+                                </div>
+
+                                <h6 class="mb-3">Información Deportiva</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Posición Principal</label>
+                                        <p class="mb-0">Delantero Centro</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Posiciones Alternativas</label>
+                                        <p class="mb-0">Extremo Derecho, Media Punta</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Debut Profesional</label>
+                                        <p class="mb-0">2019 - Juveniles FC</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Valor de Mercado</label>
+                                        <p class="mb-0">$25,000 USD</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <h6 class="mb-3">Rendimiento Actual</h6>
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span>Efectividad de Gol</span>
+                                            <strong>87%</strong>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 87%"></div>
+                                        </div>
+                                        
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span>Pases Completados</span>
+                                            <strong>78%</strong>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar bg-info" style="width: 78%"></div>
+                                        </div>
+                                        
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span>Duelos Ganados</span>
+                                            <strong>65%</strong>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                        </div>
+                                        
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span>Condición Física</span>
+                                            <strong>92%</strong>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-primary" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h6 class="mb-3 mt-4">Logros Recientes</h6>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex align-items-center px-0">
+                                        <i class="bi bi-trophy-fill text-warning me-3"></i>
+                                        <div>
+                                            <div class="fw-bold">Máximo Goleador</div>
+                                            <small class="text-muted">Copa Primavera 2024</small>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center px-0">
+                                        <i class="bi bi-star-fill text-primary me-3"></i>
+                                        <div>
+                                            <div class="fw-bold">Jugador del Mes</div>
+                                            <small class="text-muted">Marzo 2024</small>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center px-0">
+                                        <i class="bi bi-bullseye text-success me-3"></i>
+                                        <div>
+                                            <div class="fw-bold">Hat-trick</div>
+                                            <small class="text-muted">vs Tigres United</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Tab -->
+                    <div class="tab-pane fade" id="stats">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Estadísticas Ofensivas</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            <tr>
+                                                <td>Goles</td>
+                                                <td class="text-end"><strong>7</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Asistencias</td>
+                                                <td class="text-end"><strong>3</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiros a Puerta</td>
+                                                <td class="text-end"><strong>15</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiros Totales</td>
+                                                <td class="text-end"><strong>23</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Efectividad de Tiro</td>
+                                                <td class="text-end"><strong>65%</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Goles por Partido</td>
+                                                <td class="text-end"><strong>1.4</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Minutos por Gol</td>
+                                                <td class="text-end"><strong>64</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h6 class="mb-3">Estadísticas Generales</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            <tr>
+                                                <td>Partidos Jugados</td>
+                                                <td class="text-end"><strong>5</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Partidos Titular</td>
+                                                <td class="text-end"><strong>5</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Minutos Jugados</td>
+                                                <td class="text-end"><strong>450</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pases Completados</td>
+                                                <td class="text-end"><strong>78%</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Duelos Ganados</td>
+                                                <td class="text-end"><strong>65%</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarjetas Amarillas</td>
+                                                <td class="text-end"><strong>1</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tarjetas Rojas</td>
+                                                <td class="text-end"><strong>0</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Chart -->
+                        <div class="mt-4">
+                            <h6 class="mb-3">Rendimiento por Partido</h6>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-end" style="height: 200px;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="bg-primary rounded" style="width: 30px; height: 120px; margin-bottom: 10px;"></div>
+                                            <small>J1</small>
+                                            <small class="text-muted">2 goles</small>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="bg-primary rounded" style="width: 30px; height: 60px; margin-bottom: 10px;"></div>
+                                            <small>J2</small>
+                                            <small class="text-muted">1 gol</small>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="bg-primary rounded" style="width: 30px; height: 40px; margin-bottom: 10px;"></div>
+                                            <small>J3</small>
+                                            <small class="text-muted">0 goles</small>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="bg-primary rounded" style="width: 30px; height: 180px; margin-bottom: 10px;"></div>
+                                            <small>J4</small>
+                                            <small class="text-muted">3 goles</small>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="bg-primary rounded" style="width: 30px; height: 60px; margin-bottom: 10px;"></div>
+                                            <small>J5</small>
+                                            <small class="text-muted">1 gol</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Matches Tab -->
+                    <div class="tab-pane fade" id="matches">
+                        <h6 class="mb-3">Partidos Jugados (5)</h6>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Rival</th>
+                                        <th>Resultado</th>
+                                        <th>Minutos</th>
+                                        <th>Goles</th>
+                                        <th>Asistencias</th>
+                                        <th>Tarjetas</th>
+                                        <th>Valoración</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>22 Mar 2024</td>
+                                        <td>🐅 Tigres United</td>
+                                        <td><span class="fw-bold text-success">3-1</span></td>
+                                        <td>90'</td>
+                                        <td><span class="badge bg-warning">3</span></td>
+                                        <td>0</td>
+                                        <td>-</td>
+                                        <td><span class="badge bg-success">9.5</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>18 Mar 2024</td>
+                                        <td>🦁 Leones FC</td>
+                                        <td><span class="fw-bold text-warning">1-1</span></td>
+                                        <td>90'</td>
+                                        <td><span class="badge bg-warning">1</span></td>
+                                        <td>0</td>
+                                        <td>-</td>
+                                        <td><span class="badge bg-info">7.5</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 Mar 2024</td>
+                                        <td>🐺 Lobos FC</td>
+                                        <td><span class="fw-bold text-success">2-0</span></td>
+                                        <td>90'</td>
+                                        <td><span class="badge bg-warning">2</span></td>
+                                        <td><span class="badge bg-info">1</span></td>
+                                        <td>-</td>
+                                        <td><span class="badge bg-success">8.5</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>12 Mar 2024</td>
+                                        <td>🐻 Osos FC</td>
+                                        <td><span class="fw-bold text-success">1-0</span></td>
+                                        <td>90'</td>
+                                        <td><span class="badge bg-warning">1</span></td>
+                                        <td><span class="badge bg-info">1</span></td>
+                                        <td><span class="badge bg-warning">⚠️</span></td>
+                                        <td><span class="badge bg-info">7.0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>08 Mar 2024</td>
+                                        <td>🦅 Halcones FC</td>
+                                        <td><span class="fw-bold text-danger">0-1</span></td>
+                                        <td>90'</td>
+                                        <td>0</td>
+                                        <td><span class="badge bg-info">1</span></td>
+                                        <td>-</td>
+                                        <td><span class="badge bg-secondary">6.0</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Next Match -->
+                        <div class="mt-4">
+                            <h6 class="mb-3">Próximo Partido</h6>
+                            <div class="card border-primary">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <div class="d-flex align-items-center mb-2">
+                                                <span class="me-2">🦅</span>
+                                                <strong>Águilas FC</strong>
+                                                <span class="mx-3">vs</span>
+                                                <span class="me-2">🐺</span>
+                                                <strong>Lobos FC</strong>
+                                            </div>
+                                            <small class="text-muted">
+                                                <i class="bi bi-calendar me-1"></i>25 Mar 2024, 16:00
+                                                <i class="bi bi-geo-alt ms-3 me-1"></i>Estadio Central
+                                            </small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-info mb-2 d-block">Próximo</span>
+                                            <small class="text-muted">Probable titular</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History Tab -->
+                    <div class="tab-pane fade" id="history">
+                        <h6 class="mb-3">Historial de Equipos</h6>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker bg-primary"></div>
+                                <div class="timeline-content">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">🦅 Águilas FC</h6>
+                                            <p class="text-muted mb-2">Delantero • #10</p>
+                                            <small class="text-muted">Enero 2024 - Presente</small>
+                                        </div>
+                                        <span class="badge bg-success">Actual</span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <small class="text-muted">7 goles • 3 asistencias • 5 partidos</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker bg-secondary"></div>
+                                <div class="timeline-content">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">⚡ Rayos FC</h6>
+                                            <p class="text-muted mb-2">Delantero • #9</p>
+                                            <small class="text-muted">Agosto 2023 - Diciembre 2023</small>
+                                        </div>
+                                        <span class="badge bg-secondary">Anterior</span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <small class="text-muted">12 goles • 5 asistencias • 15 partidos</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker bg-light"></div>
+                                <div class="timeline-content">
+                                    <div>
+                                        <h6 class="mb-1">🌟 Juveniles FC</h6>
+                                        <p class="text-muted mb-2">Delantero • #11</p>
+                                        <small class="text-muted">2019 - 2023</small>
+                                    </div>
+                                    <div class="mt-2">
+                                        <small class="text-muted">Debut profesional • 45 goles • 20 asistencias</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Career Stats -->
+                        <div class="mt-4">
+                            <h6 class="mb-3">Estadísticas de Carrera</h6>
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h4 class="text-primary">64</h4>
+                                            <small class="text-muted">Goles Totales</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h4 class="text-success">28</h4>
+                                            <small class="text-muted">Asistencias Totales</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h4 class="text-warning">85</h4>
+                                            <small class="text-muted">Partidos Jugados</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h4 class="text-info">3</h4>
+                                            <small class="text-muted">Equipos</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transfer Modal -->
+    <div class="modal fade" id="transferModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-arrow-left-right me-2"></i>Transferir Jugador
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="transferForm">
+                        <div class="mb-3">
+                            <label class="form-label">Equipo Destino</label>
+                            <select class="form-select">
+                                <option value="">Seleccionar equipo</option>
+                                <option value="tigres">🐅 Tigres United</option>
+                                <option value="leones">🦁 Leones FC</option>
+                                <option value="lobos">🐺 Lobos FC</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de Transferencia</label>
+                            <select class="form-select">
+                                <option value="permanente">Transferencia Permanente</option>
+                                <option value="prestamo">Préstamo</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha de Transferencia</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notas</label>
+                            <textarea class="form-control" rows="3" placeholder="Información adicional sobre la transferencia..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="processTransfer()">
+                        <i class="bi bi-check-circle me-2"></i>Confirmar Transferencia
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suspend Modal -->
+    <div class="modal fade" id="suspendModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-warning">
+                        <i class="bi bi-exclamation-triangle me-2"></i>Suspender Jugador
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Esta acción suspenderá temporalmente al jugador del equipo.
+                    </div>
+                    <form id="suspendForm">
+                        <div class="mb-3">
+                            <label class="form-label">Motivo de Suspensión</label>
+                            <select class="form-select">
+                                <option value="">Seleccionar motivo</option>
+                                <option value="disciplinario">Motivo Disciplinario</option>
+                                <option value="lesion">Lesión</option>
+                                <option value="personal">Motivos Personales</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Duración (días)</label>
+                            <input type="number" class="form-control" min="1" max="365">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" rows="3" placeholder="Detalles de la suspensión..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning" onclick="suspendPlayer()">
+                        <i class="bi bi-exclamation-triangle me-2"></i>Suspender
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-trophy-fill text-primary me-2"></i>
+                        TorneoManager Pro
+                    </h5>
+                    <p class="text-light">La plataforma más avanzada para gestionar torneos de fútbol. Organiza, administra y disfruta de tus competiciones deportivas.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Plataforma</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="torneos.html" class="text-light text-decoration-none">Torneos</a></li>
+                        <li class="mb-2"><a href="equipos.html" class="text-light text-decoration-none">Equipos</a></li>
+                        <li class="mb-2"><a href="jugadores.html" class="text-light text-decoration-none">Jugadores</a></li>
+                        <li class="mb-2"><a href="estadisticas.html" class="text-light text-decoration-none">Estadísticas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Recursos</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Ayuda</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Documentación</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">API</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Empresa</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Acerca de</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Contacto</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Carreras</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Prensa</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Privacidad</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Términos</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Cookies</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Licencias</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-light">&copy; 2024 TorneoManager Pro. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-light">Hecho con ❤️ para la comunidad deportiva</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        function editPlayer() {
+            alert('Función de edición en desarrollo');
+        }
+        
+        function sharePlayer() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Diego Martínez - Águilas FC',
+                    text: 'Mira el perfil de este jugador en TorneoManager Pro',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Enlace copiado al portapapeles');
+            }
+        }
+
+        function processTransfer() {
+            const form = document.getElementById('transferForm');
+            alert('Transferencia procesada exitosamente!');
+            bootstrap.Modal.getInstance(document.getElementById('transferModal')).hide();
+            form.reset();
+        }
+
+        function suspendPlayer() {
+            const form = document.getElementById('suspendForm');
+            alert('Jugador suspendido temporalmente');
+            bootstrap.Modal.getInstance(document.getElementById('suspendModal')).hide();
+            form.reset();
+        }
+    </script>
+
+    <style>
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #dee2e6;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -23px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #dee2e6;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0d6efd;
+        }
+    </style>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'982682da24a4ad71',t:'MTc1ODQyNTcxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Equipos - TorneoManager Pro</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="dashboard.html">
+                <i class="bi bi-trophy-fill me-2"></i>
+                TorneoManager Pro
+            </a>
+            
+            <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
+                <!-- Quick Actions -->
+                <div class="nav-item dropdown me-3">
+                    <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="bi bi-plus-circle me-1"></i>Crear
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="showCreateTeam()">
+                            <i class="bi bi-people me-2"></i>Nuevo Equipo
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showAddPlayer()">
+                            <i class="bi bi-person-plus me-2"></i>Agregar Jugador
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showBulkImport()">
+                            <i class="bi bi-upload me-2"></i>Importar Equipos
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- User Menu -->
+                <div class="nav-item dropdown">
+                    <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle me-1"></i>Carlos Admin
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="dashboard.html">
+                            <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                        </a></li>
+                        <li><a class="dropdown-item" href="#">
+                            <i class="bi bi-person me-2"></i>Mi Perfil
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="index.html">
+                            <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-white sidebar shadow-sm">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tournaments.html">
+                                <i class="bi bi-trophy me-2"></i>Torneos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-people me-2"></i>Equipos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('matches')">
+                                <i class="bi bi-calendar-event me-2"></i>Partidos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('results')">
+                                <i class="bi bi-clipboard-data me-2"></i>Resultados
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('standings')">
+                                <i class="bi bi-list-ol me-2"></i>Posiciones
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('statistics')">
+                                <i class="bi bi-graph-up me-2"></i>Estadísticas
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">
+                        <i class="bi bi-people me-2"></i>Gestión de Equipos
+                    </h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-primary" onclick="showCreateTeam()">
+                                <i class="bi bi-plus-circle me-1"></i>Nuevo Equipo
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="exportTeams()">
+                                <i class="bi bi-download me-1"></i>Exportar
+                            </button>
+                            <button type="button" class="btn btn-outline-info" onclick="showBulkActions()">
+                                <i class="bi bi-gear me-1"></i>Acciones Masivas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="searchTeam" class="form-label">Buscar Equipo</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-search"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="searchTeam" placeholder="Nombre del equipo..." onkeyup="filterTeams()">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="filterTournament" class="form-label">Torneo</label>
+                                <select class="form-select" id="filterTournament" onchange="filterTeams()">
+                                    <option value="">Todos</option>
+                                    <option value="1">Liga Premier 2024</option>
+                                    <option value="2">Copa Nacional</option>
+                                    <option value="3">Torneo Juvenil</option>
+                                    <option value="4">Liga Básquetbol Pro</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="filterStatus" class="form-label">Estado</label>
+                                <select class="form-select" id="filterStatus" onchange="filterTeams()">
+                                    <option value="">Todos</option>
+                                    <option value="active">Activos</option>
+                                    <option value="inactive">Inactivos</option>
+                                    <option value="pending">Pendientes</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="filterCategory" class="form-label">Categoría</label>
+                                <select class="form-select" id="filterCategory" onchange="filterTeams()">
+                                    <option value="">Todas</option>
+                                    <option value="professional">Profesional</option>
+                                    <option value="amateur">Amateur</option>
+                                    <option value="youth">Juvenil</option>
+                                    <option value="veteran">Veteranos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="sortTeams" class="form-label">Ordenar por</label>
+                                <select class="form-select" id="sortTeams" onchange="sortTeams()">
+                                    <option value="name">Nombre</option>
+                                    <option value="players">Jugadores</option>
+                                    <option value="tournaments">Torneos</option>
+                                    <option value="created">Fecha creación</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Stats -->
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h4 class="mb-0">24</h4>
+                                        <p class="mb-0">Total Equipos</p>
+                                    </div>
+                                    <i class="bi bi-people" style="font-size: 2rem; opacity: 0.7;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h4 class="mb-0">18</h4>
+                                        <p class="mb-0">Activos</p>
+                                    </div>
+                                    <i class="bi bi-check-circle" style="font-size: 2rem; opacity: 0.7;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-info text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h4 class="mb-0">312</h4>
+                                        <p class="mb-0">Total Jugadores</p>
+                                    </div>
+                                    <i class="bi bi-person" style="font-size: 2rem; opacity: 0.7;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-warning text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h4 class="mb-0">6</h4>
+                                        <p class="mb-0">Pendientes</p>
+                                    </div>
+                                    <i class="bi bi-clock" style="font-size: 2rem; opacity: 0.7;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teams List -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="bi bi-list me-2"></i>Lista de Equipos
+                        </h5>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary" onclick="toggleView('grid')" id="gridViewBtn">
+                                <i class="bi bi-grid-3x3-gap"></i>
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="toggleView('table')" id="tableViewBtn">
+                                <i class="bi bi-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <!-- Table View -->
+                        <div id="tableView" class="table-responsive">
+                            <table class="table table-hover mb-0" id="teamsTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="form-check-input" id="selectAll" onchange="toggleSelectAll()">
+                                        </th>
+                                        <th>Equipo</th>
+                                        <th>Capitán</th>
+                                        <th>Jugadores</th>
+                                        <th>Torneos</th>
+                                        <th>Categoría</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="teamsTableBody">
+                                    <!-- Team rows will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Grid View -->
+                        <div id="gridView" class="p-3" style="display: none;">
+                            <div class="row" id="teamsGrid">
+                                <!-- Team cards will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Teams pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </main>
+        </div>
+    </div>
+
+    <!-- Create Team Modal -->
+    <div class="modal fade" id="createTeamModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-people me-2"></i>Crear Nuevo Equipo
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createTeamForm">
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="teamName" class="form-label">Nombre del Equipo *</label>
+                                <input type="text" class="form-control" id="teamName" placeholder="Ej: Real Madrid FC" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="teamCategory" class="form-label">Categoría *</label>
+                                <select class="form-select" id="teamCategory" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="professional">Profesional</option>
+                                    <option value="amateur">Amateur</option>
+                                    <option value="youth">Juvenil</option>
+                                    <option value="veteran">Veteranos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="teamCity" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" id="teamCity" placeholder="Ciudad de origen">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="teamFounded" class="form-label">Año de Fundación</label>
+                                <input type="number" class="form-control" id="teamFounded" placeholder="2020" min="1900" max="2024">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="teamColors" class="form-label">Colores del Equipo</label>
+                                <input type="text" class="form-control" id="teamColors" placeholder="Azul y Blanco">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="teamStadium" class="form-label">Estadio/Campo</label>
+                                <input type="text" class="form-control" id="teamStadium" placeholder="Estadio Principal">
+                            </div>
+                            <div class="col-12">
+                                <label for="teamDescription" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="teamDescription" rows="3" placeholder="Historia del equipo, logros, etc."></textarea>
+                            </div>
+                            
+                            <div class="col-12">
+                                <hr>
+                                <h6>Información de Contacto</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="managerName" class="form-label">Nombre del Manager/DT</label>
+                                <input type="text" class="form-control" id="managerName" placeholder="Juan Pérez">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="managerPhone" class="form-label">Teléfono de Contacto</label>
+                                <input type="tel" class="form-control" id="managerPhone" placeholder="+52 55 1234 5678">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="managerEmail" class="form-label">Email de Contacto</label>
+                                <input type="email" class="form-control" id="managerEmail" placeholder="manager@equipo.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="teamWebsite" class="form-label">Sitio Web</label>
+                                <input type="url" class="form-control" id="teamWebsite" placeholder="https://www.equipo.com">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="createTeam()">
+                        <i class="bi bi-check-circle me-2"></i>Crear Equipo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Details Modal -->
+    <div class="modal fade" id="teamDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teamDetailsTitle">
+                        <i class="bi bi-people me-2"></i>Detalles del Equipo
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="teamDetailsBody">
+                    <!-- Team details will be populated by JavaScript -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="editTeam()">
+                        <i class="bi bi-pencil me-2"></i>Editar
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="manageTeam()">
+                        <i class="bi bi-gear me-2"></i>Gestionar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Player Modal -->
+    <div class="modal fade" id="addPlayerModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-person-plus me-2"></i>Agregar Jugador
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addPlayerForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="playerTeam" class="form-label">Equipo *</label>
+                                <select class="form-select" id="playerTeam" required>
+                                    <option value="">Seleccionar equipo...</option>
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="playerNumber" class="form-label">Número de Camiseta</label>
+                                <input type="number" class="form-control" id="playerNumber" placeholder="10" min="1" max="99">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="playerFirstName" class="form-label">Nombre *</label>
+                                <input type="text" class="form-control" id="playerFirstName" placeholder="Juan" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="playerLastName" class="form-label">Apellidos *</label>
+                                <input type="text" class="form-control" id="playerLastName" placeholder="Pérez García" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="playerPosition" class="form-label">Posición</label>
+                                <select class="form-select" id="playerPosition">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="goalkeeper">Portero</option>
+                                    <option value="defender">Defensa</option>
+                                    <option value="midfielder">Mediocampo</option>
+                                    <option value="forward">Delantero</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="playerAge" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="playerAge" placeholder="25" min="16" max="50">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="playerHeight" class="form-label">Altura (cm)</label>
+                                <input type="number" class="form-control" id="playerHeight" placeholder="175" min="150" max="220">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="playerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="playerEmail" placeholder="jugador@email.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="playerPhone" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="playerPhone" placeholder="+52 55 1234 5678">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="playerCaptain">
+                                    <label class="form-check-label" for="playerCaptain">
+                                        Capitán del equipo
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="addPlayer()">
+                        <i class="bi bi-person-plus me-2"></i>Agregar Jugador
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteTeamModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-exclamation-triangle text-warning me-2"></i>Confirmar Eliminación
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar este equipo?</p>
+                    <div class="alert alert-warning">
+                        <strong>¡Atención!</strong> Esta acción eliminará también todos los jugadores asociados y el historial de participación en torneos.
+                    </div>
+                    <p><strong>Equipo:</strong> <span id="deleteTeamName"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmDeleteTeam()">
+                        <i class="bi bi-trash me-2"></i>Eliminar Equipo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sample teams data
+        let teams = [
+            {
+                id: 1,
+                name: "Real Madrid FC",
+                category: "professional",
+                city: "Madrid",
+                founded: 1902,
+                colors: "Blanco y Azul",
+                stadium: "Santiago Bernabéu",
+                manager: "Carlo Ancelotti",
+                phone: "+34 91 398 4300",
+                email: "info@realmadrid.com",
+                website: "https://www.realmadrid.com",
+                players: 25,
+                tournaments: 3,
+                status: "active",
+                captain: "Sergio Ramos",
+                description: "Club de fútbol profesional español"
+            },
+            {
+                id: 2,
+                name: "Barcelona FC",
+                category: "professional",
+                city: "Barcelona",
+                founded: 1899,
+                colors: "Azul y Granate",
+                stadium: "Camp Nou",
+                manager: "Xavi Hernández",
+                phone: "+34 93 496 3600",
+                email: "info@fcbarcelona.com",
+                website: "https://www.fcbarcelona.com",
+                players: 23,
+                tournaments: 2,
+                status: "active",
+                captain: "Sergio Busquets",
+                description: "Más que un club"
+            },
+            {
+                id: 3,
+                name: "Atlético Madrid",
+                category: "professional",
+                city: "Madrid",
+                founded: 1903,
+                colors: "Rojo y Blanco",
+                stadium: "Wanda Metropolitano",
+                manager: "Diego Simeone",
+                phone: "+34 91 366 4707",
+                email: "info@atleticodemadrid.com",
+                website: "https://www.atleticodemadrid.com",
+                players: 22,
+                tournaments: 2,
+                status: "active",
+                captain: "Koke",
+                description: "Club atlético de Madrid"
+            },
+            {
+                id: 4,
+                name: "Sevilla FC",
+                category: "professional",
+                city: "Sevilla",
+                founded: 1890,
+                colors: "Blanco y Rojo",
+                stadium: "Ramón Sánchez-Pizjuán",
+                manager: "José Luis Mendilibar",
+                phone: "+34 95 453 5353",
+                email: "info@sevillafc.es",
+                website: "https://www.sevillafc.es",
+                players: 24,
+                tournaments: 1,
+                status: "active",
+                captain: "Jesús Navas",
+                description: "Club de fútbol sevillano"
+            },
+            {
+                id: 5,
+                name: "Valencia CF",
+                category: "professional",
+                city: "Valencia",
+                founded: 1919,
+                colors: "Blanco y Naranja",
+                stadium: "Mestalla",
+                manager: "Rubén Baraja",
+                phone: "+34 96 337 2626",
+                email: "info@valenciacf.com",
+                website: "https://www.valenciacf.com",
+                players: 21,
+                tournaments: 1,
+                status: "active",
+                captain: "José Gayà",
+                description: "Club valenciano histórico"
+            },
+            {
+                id: 6,
+                name: "Real Betis",
+                category: "professional",
+                city: "Sevilla",
+                founded: 1907,
+                colors: "Verde y Blanco",
+                stadium: "Benito Villamarín",
+                manager: "Manuel Pellegrini",
+                phone: "+34 95 461 0340",
+                email: "info@realbetisbalompie.es",
+                website: "https://www.realbetisbalompie.es",
+                players: 23,
+                tournaments: 2,
+                status: "active",
+                captain: "Joaquín",
+                description: "El Betis manque pierda"
+            },
+            {
+                id: 7,
+                name: "Juveniles Unidos",
+                category: "youth",
+                city: "Barcelona",
+                founded: 2015,
+                colors: "Azul y Amarillo",
+                stadium: "Campo Municipal",
+                manager: "Pedro Martínez",
+                phone: "+34 93 123 4567",
+                email: "info@juvenilesunidos.com",
+                website: "",
+                players: 18,
+                tournaments: 1,
+                status: "active",
+                captain: "Marc González",
+                description: "Equipo juvenil de la ciudad"
+            },
+            {
+                id: 8,
+                name: "Veteranos Madrid",
+                category: "veteran",
+                city: "Madrid",
+                founded: 2010,
+                colors: "Gris y Negro",
+                stadium: "Polideportivo Norte",
+                manager: "Antonio López",
+                phone: "+34 91 987 6543",
+                email: "veteranos@madrid.com",
+                website: "",
+                players: 16,
+                tournaments: 1,
+                status: "active",
+                captain: "Miguel Ángel",
+                description: "Equipo de veteranos +35"
+            }
+        ];
+
+        let selectedTeams = [];
+        let currentView = 'table';
+        let selectedTeamId = null;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTeams();
+            populateTeamSelects();
+        });
+
+        // Load teams into table or grid
+        function loadTeams() {
+            if (currentView === 'table') {
+                loadTeamsTable();
+            } else {
+                loadTeamsGrid();
+            }
+        }
+
+        // Load teams into table
+        function loadTeamsTable() {
+            const tbody = document.getElementById('teamsTableBody');
+            tbody.innerHTML = '';
+
+            teams.forEach(team => {
+                const row = createTeamRow(team);
+                tbody.appendChild(row);
+            });
+        }
+
+        // Load teams into grid
+        function loadTeamsGrid() {
+            const grid = document.getElementById('teamsGrid');
+            grid.innerHTML = '';
+
+            teams.forEach(team => {
+                const card = createTeamCard(team);
+                grid.appendChild(card);
+            });
+        }
+
+        // Create team table row
+        function createTeamRow(team) {
+            const row = document.createElement('tr');
+            row.setAttribute('data-team-id', team.id);
+            
+            const statusBadge = getStatusBadge(team.status);
+            const categoryBadge = getCategoryBadge(team.category);
+            
+            row.innerHTML = `
+                <td>
+                    <input type="checkbox" class="form-check-input team-checkbox" value="${team.id}" onchange="updateSelectedTeams()">
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="team-avatar me-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                ${team.name.charAt(0)}
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="mb-0">${team.name}</h6>
+                            <small class="text-muted">${team.city} • ${team.founded}</small>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <strong>${team.captain}</strong><br>
+                        <small class="text-muted">${team.manager}</small>
+                    </div>
+                </td>
+                <td>
+                    <span class="badge bg-info">${team.players}</span>
+                </td>
+                <td>
+                    <span class="badge bg-secondary">${team.tournaments}</span>
+                </td>
+                <td>${categoryBadge}</td>
+                <td>${statusBadge}</td>
+                <td>
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-outline-primary" onclick="viewTeam(${team.id})" title="Ver detalles">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="editTeam(${team.id})" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-outline-success" onclick="manageTeam(${team.id})" title="Gestionar">
+                            <i class="bi bi-people"></i>
+                        </button>
+                        <button class="btn btn-outline-danger" onclick="deleteTeam(${team.id})" title="Eliminar">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            return row;
+        }
+
+        // Create team card
+        function createTeamCard(team) {
+            const col = document.createElement('div');
+            col.className = 'col-md-6 col-lg-4 mb-4';
+            
+            const statusBadge = getStatusBadge(team.status);
+            const categoryBadge = getCategoryBadge(team.category);
+            
+            col.innerHTML = `
+                <div class="card h-100 team-card" data-team-id="${team.id}">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <div class="team-avatar me-2">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
+                                    ${team.name.charAt(0)}
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">${team.name}</h6>
+                                <small class="text-muted">${team.city}</small>
+                            </div>
+                        </div>
+                        <input type="checkbox" class="form-check-input team-checkbox" value="${team.id}" onchange="updateSelectedTeams()">
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <small class="text-muted">Jugadores</small>
+                                <div class="fw-bold">${team.players}</div>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted">Torneos</small>
+                                <div class="fw-bold">${team.tournaments}</div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted">Capitán:</small> <strong>${team.captain}</strong>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted">DT:</small> ${team.manager}
+                        </div>
+                        <div class="d-flex gap-2 mb-3">
+                            ${categoryBadge}
+                            ${statusBadge}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group w-100">
+                            <button class="btn btn-outline-primary btn-sm" onclick="viewTeam(${team.id})">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="editTeam(${team.id})">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-outline-success btn-sm" onclick="manageTeam(${team.id})">
+                                <i class="bi bi-people"></i>
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" onclick="deleteTeam(${team.id})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return col;
+        }
+
+        // Helper functions
+        function getStatusBadge(status) {
+            const badges = {
+                'active': '<span class="badge bg-success">Activo</span>',
+                'inactive': '<span class="badge bg-secondary">Inactivo</span>',
+                'pending': '<span class="badge bg-warning">Pendiente</span>'
+            };
+            return badges[status] || '<span class="badge bg-light text-dark">Desconocido</span>';
+        }
+
+        function getCategoryBadge(category) {
+            const badges = {
+                'professional': '<span class="badge bg-primary">Profesional</span>',
+                'amateur': '<span class="badge bg-info">Amateur</span>',
+                'youth': '<span class="badge bg-warning">Juvenil</span>',
+                'veteran': '<span class="badge bg-secondary">Veteranos</span>'
+            };
+            return badges[category] || '<span class="badge bg-light text-dark">Otra</span>';
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'professional': 'Profesional',
+                'amateur': 'Amateur',
+                'youth': 'Juvenil',
+                'veteran': 'Veteranos'
+            };
+            return names[category] || 'Otra';
+        }
+
+        // View toggle functions
+        function toggleView(view) {
+            currentView = view;
+            
+            if (view === 'table') {
+                document.getElementById('tableView').style.display = 'block';
+                document.getElementById('gridView').style.display = 'none';
+                document.getElementById('tableViewBtn').classList.add('btn-primary');
+                document.getElementById('tableViewBtn').classList.remove('btn-outline-primary');
+                document.getElementById('gridViewBtn').classList.add('btn-outline-primary');
+                document.getElementById('gridViewBtn').classList.remove('btn-primary');
+            } else {
+                document.getElementById('tableView').style.display = 'none';
+                document.getElementById('gridView').style.display = 'block';
+                document.getElementById('gridViewBtn').classList.add('btn-primary');
+                document.getElementById('gridViewBtn').classList.remove('btn-outline-primary');
+                document.getElementById('tableViewBtn').classList.add('btn-outline-primary');
+                document.getElementById('tableViewBtn').classList.remove('btn-primary');
+            }
+            
+            loadTeams();
+        }
+
+        // Filter and search functions
+        function filterTeams() {
+            const searchTerm = document.getElementById('searchTeam').value.toLowerCase();
+            const tournamentFilter = document.getElementById('filterTournament').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            const categoryFilter = document.getElementById('filterCategory').value;
+
+            const filteredTeams = teams.filter(team => {
+                const matchesSearch = team.name.toLowerCase().includes(searchTerm) ||
+                                    team.city.toLowerCase().includes(searchTerm) ||
+                                    team.manager.toLowerCase().includes(searchTerm);
+                const matchesStatus = !statusFilter || team.status === statusFilter;
+                const matchesCategory = !categoryFilter || team.category === categoryFilter;
+                // Tournament filter would need additional logic based on team-tournament relationships
+
+                return matchesSearch && matchesStatus && matchesCategory;
+            });
+
+            displayFilteredTeams(filteredTeams);
+        }
+
+        function displayFilteredTeams(filteredTeams) {
+            const originalTeams = teams;
+            teams = filteredTeams;
+            loadTeams();
+            teams = originalTeams;
+        }
+
+        function sortTeams() {
+            const sortBy = document.getElementById('sortTeams').value;
+            
+            teams.sort((a, b) => {
+                switch(sortBy) {
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'players':
+                        return b.players - a.players;
+                    case 'tournaments':
+                        return b.tournaments - a.tournaments;
+                    case 'created':
+                        return b.founded - a.founded;
+                    default:
+                        return 0;
+                }
+            });
+
+            loadTeams();
+        }
+
+        // Selection functions
+        function toggleSelectAll() {
+            const selectAll = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('.team-checkbox');
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAll.checked;
+            });
+            
+            updateSelectedTeams();
+        }
+
+        function updateSelectedTeams() {
+            const checkboxes = document.querySelectorAll('.team-checkbox:checked');
+            selectedTeams = Array.from(checkboxes).map(cb => parseInt(cb.value));
+            
+            // Update select all checkbox
+            const selectAll = document.getElementById('selectAll');
+            const allCheckboxes = document.querySelectorAll('.team-checkbox');
+            selectAll.checked = selectedTeams.length === allCheckboxes.length;
+            selectAll.indeterminate = selectedTeams.length > 0 && selectedTeams.length < allCheckboxes.length;
+        }
+
+        // Modal functions
+        function showCreateTeam() {
+            const modal = new bootstrap.Modal(document.getElementById('createTeamModal'));
+            modal.show();
+        }
+
+        function showAddPlayer() {
+            populateTeamSelects();
+            const modal = new bootstrap.Modal(document.getElementById('addPlayerModal'));
+            modal.show();
+        }
+
+        function showBulkImport() {
+            alert('Función de importación masiva...\n(Permitiría importar equipos desde archivos CSV, Excel, etc.)');
+        }
+
+        function showBulkActions() {
+            if (selectedTeams.length === 0) {
+                alert('Selecciona al menos un equipo para realizar acciones masivas.');
+                return;
+            }
+            
+            const actions = [
+                'Asignar a torneo',
+                'Cambiar estado',
+                'Exportar seleccionados',
+                'Eliminar seleccionados'
+            ];
+            
+            const action = prompt(`Equipos seleccionados: ${selectedTeams.length}\n\nAcciones disponibles:\n${actions.map((a, i) => `${i+1}. ${a}`).join('\n')}\n\nIngresa el número de la acción:`);
+            
+            if (action) {
+                alert(`Ejecutando acción ${actions[parseInt(action)-1]} en ${selectedTeams.length} equipos...`);
+            }
+        }
+
+        // Populate team selects
+        function populateTeamSelects() {
+            const select = document.getElementById('playerTeam');
+            select.innerHTML = '<option value="">Seleccionar equipo...</option>';
+            
+            teams.forEach(team => {
+                const option = document.createElement('option');
+                option.value = team.id;
+                option.textContent = team.name;
+                select.appendChild(option);
+            });
+        }
+
+        // Team actions
+        function createTeam() {
+            const formData = {
+                name: document.getElementById('teamName').value,
+                category: document.getElementById('teamCategory').value,
+                city: document.getElementById('teamCity').value,
+                founded: parseInt(document.getElementById('teamFounded').value) || new Date().getFullYear(),
+                colors: document.getElementById('teamColors').value,
+                stadium: document.getElementById('teamStadium').value,
+                manager: document.getElementById('managerName').value,
+                phone: document.getElementById('managerPhone').value,
+                email: document.getElementById('managerEmail').value,
+                website: document.getElementById('teamWebsite').value,
+                description: document.getElementById('teamDescription').value
+            };
+
+            if (!formData.name || !formData.category) {
+                alert('Por favor completa los campos obligatorios.');
+                return;
+            }
+
+            const newTeam = {
+                id: teams.length + 1,
+                ...formData,
+                players: 0,
+                tournaments: 0,
+                status: 'active',
+                captain: 'Por asignar'
+            };
+
+            teams.unshift(newTeam);
+            loadTeams();
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('createTeamModal'));
+            modal.hide();
+            document.getElementById('createTeamForm').reset();
+
+            alert(`¡Equipo "${formData.name}" creado exitosamente!`);
+        }
+
+        function addPlayer() {
+            const formData = {
+                team: document.getElementById('playerTeam').value,
+                number: document.getElementById('playerNumber').value,
+                firstName: document.getElementById('playerFirstName').value,
+                lastName: document.getElementById('playerLastName').value,
+                position: document.getElementById('playerPosition').value,
+                age: document.getElementById('playerAge').value,
+                height: document.getElementById('playerHeight').value,
+                email: document.getElementById('playerEmail').value,
+                phone: document.getElementById('playerPhone').value,
+                captain: document.getElementById('playerCaptain').checked
+            };
+
+            if (!formData.team || !formData.firstName || !formData.lastName) {
+                alert('Por favor completa los campos obligatorios.');
+                return;
+            }
+
+            // Update team player count
+            const team = teams.find(t => t.id == formData.team);
+            if (team) {
+                team.players++;
+                if (formData.captain) {
+                    team.captain = `${formData.firstName} ${formData.lastName}`;
+                }
+            }
+
+            loadTeams();
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addPlayerModal'));
+            modal.hide();
+            document.getElementById('addPlayerForm').reset();
+
+            alert(`¡Jugador "${formData.firstName} ${formData.lastName}" agregado exitosamente!`);
+        }
+
+        function viewTeam(id) {
+            const team = teams.find(t => t.id === id);
+            if (!team) return;
+
+            const modal = new bootstrap.Modal(document.getElementById('teamDetailsModal'));
+            document.getElementById('teamDetailsTitle').innerHTML = 
+                `<i class="bi bi-people me-2"></i>${team.name}`;
+            
+            document.getElementById('teamDetailsBody').innerHTML = `
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Información General</h6>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Nombre:</strong> ${team.name}</p>
+                                <p><strong>Ciudad:</strong> ${team.city}</p>
+                                <p><strong>Fundado:</strong> ${team.founded}</p>
+                                <p><strong>Colores:</strong> ${team.colors}</p>
+                                <p><strong>Estadio:</strong> ${team.stadium}</p>
+                                <p><strong>Categoría:</strong> ${getCategoryBadge(team.category)}</p>
+                                <p><strong>Estado:</strong> ${getStatusBadge(team.status)}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Estadísticas</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="text-center">
+                                            <h4 class="text-primary">${team.players}</h4>
+                                            <small class="text-muted">Jugadores</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-center">
+                                            <h4 class="text-success">${team.tournaments}</h4>
+                                            <small class="text-muted">Torneos</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p><strong>Capitán:</strong> ${team.captain}</p>
+                                <p><strong>Director Técnico:</strong> ${team.manager}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Contacto</h6>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Teléfono:</strong> ${team.phone || 'No especificado'}</p>
+                                <p><strong>Email:</strong> ${team.email || 'No especificado'}</p>
+                                <p><strong>Sitio Web:</strong> 
+                                    ${team.website ? `<a href="${team.website}" target="_blank">${team.website}</a>` : 'No especificado'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="mb-0">Descripción</h6>
+                            </div>
+                            <div class="card-body">
+                                <p>${team.description || 'Sin descripción disponible.'}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            selectedTeamId = id;
+            modal.show();
+        }
+
+        function editTeam(id) {
+            alert(`Editando equipo ID: ${id}\n(En la implementación completa, esto abriría el formulario de edición con los datos precargados)`);
+        }
+
+        function manageTeam(id) {
+            const team = teams.find(t => t.id === id);
+            alert(`Gestionando equipo: ${team.name}\n(Esto abriría el panel de gestión completo con jugadores, estadísticas, historial, etc.)`);
+        }
+
+        function deleteTeam(id) {
+            const team = teams.find(t => t.id === id);
+            if (!team) return;
+
+            selectedTeamId = id;
+            document.getElementById('deleteTeamName').textContent = team.name;
+            
+            const modal = new bootstrap.Modal(document.getElementById('deleteTeamModal'));
+            modal.show();
+        }
+
+        function confirmDeleteTeam() {
+            if (selectedTeamId) {
+                teams = teams.filter(t => t.id !== selectedTeamId);
+                loadTeams();
+                
+                const modal = bootstrap.Modal.getInstance(document.getElementById('deleteTeamModal'));
+                modal.hide();
+                
+                alert('Equipo eliminado exitosamente');
+                selectedTeamId = null;
+            }
+        }
+
+        // Export function
+        function exportTeams() {
+            alert('Exportando lista de equipos...\n(En la implementación real, esto generaría un archivo CSV o Excel con todos los datos de los equipos)');
+        }
+
+        // Navigation function
+        function showSection(section) {
+            alert(`Navegando a la sección: ${section}\n(En la implementación completa, esto cargaría la página correspondiente)`);
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 48px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar .nav-link {
+            font-weight: 500;
+            color: #333;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            margin: 0.125rem 0.5rem;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .sidebar .nav-link:hover {
+            color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+
+        .sidebar .nav-link.active {
+            color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+
+        .table th {
+            border-top: none;
+            font-weight: 600;
+            color: #495057;
+            background-color: #f8f9fa;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        .team-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .team-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-avatar {
+            flex-shrink: 0;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .btn-group-sm > .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .badge {
+            font-size: 0.75em;
+        }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                top: 5rem;
+                padding-top: 0;
+            }
+            
+            .table-responsive {
+                font-size: 0.875rem;
+            }
+            
+            .btn-group-sm > .btn {
+                padding: 0.125rem 0.25rem;
+                font-size: 0.75rem;
+            }
+            
+            .team-card .card-body {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9826bc0385b72782',t:'MTc1ODQyODA1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

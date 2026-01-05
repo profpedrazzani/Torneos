@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Torneo - TorneoManager Pro</title>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="index.html">
+                <i class="bi bi-trophy-fill me-2"></i>
+                TorneoManager Pro
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill me-1"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="torneos.html">
+                            <i class="bi bi-trophy me-1"></i>Torneos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="equipos.html">
+                            <i class="bi bi-people-fill me-1"></i>Equipos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jugadores.html">
+                            <i class="bi bi-person-fill me-1"></i>Jugadores
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estadisticas.html">
+                            <i class="bi bi-graph-up me-1"></i>Estadísticas
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="registro.html">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h1 class="mb-2">
+                            <i class="bi bi-plus-circle text-primary me-3"></i>
+                            Crear Nuevo Torneo
+                        </h1>
+                        <p class="text-muted mb-0">Configura todos los detalles de tu torneo de fútbol</p>
+                    </div>
+                    <a href="torneos.html" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Volver a Torneos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <div class="step-item active">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Información Básica</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Formato y Reglas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Equipos y Fechas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-title">Revisión Final</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tournament Creation Form -->
+        <form id="tournamentForm">
+            <!-- Step 1: Basic Information -->
+            <div class="step-content active" id="step1">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Información Básica del Torneo
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-8">
+                                <label class="form-label">Nombre del Torneo *</label>
+                                <input type="text" class="form-control" id="tournamentName" placeholder="Ej: Copa Primavera 2024" required>
+                                <div class="form-text">Este será el nombre oficial que aparecerá en todos los documentos</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Emoji/Icono</label>
+                                <select class="form-select" id="tournamentIcon">
+                                    <option value="🏆">🏆 Copa</option>
+                                    <option value="⚽">⚽ Balón</option>
+                                    <option value="🥇">🥇 Medalla</option>
+                                    <option value="🌟">🌟 Estrella</option>
+                                    <option value="🔥">🔥 Fuego</option>
+                                    <option value="⚡">⚡ Rayo</option>
+                                    <option value="🎯">🎯 Diana</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Descripción</label>
+                                <textarea class="form-control" id="tournamentDescription" rows="3" placeholder="Describe el torneo, sus objetivos y características especiales..."></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Categoría *</label>
+                                <select class="form-select" id="tournamentCategory" required>
+                                    <option value="">Seleccionar categoría</option>
+                                    <option value="profesional">Profesional</option>
+                                    <option value="amateur">Amateur</option>
+                                    <option value="juvenil">Juvenil</option>
+                                    <option value="infantil">Infantil</option>
+                                    <option value="veteranos">Veteranos</option>
+                                    <option value="femenil">Femenil</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Nivel de Competencia</label>
+                                <select class="form-select" id="competitionLevel">
+                                    <option value="local">Local</option>
+                                    <option value="regional">Regional</option>
+                                    <option value="nacional">Nacional</option>
+                                    <option value="internacional">Internacional</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Organizador *</label>
+                                <input type="text" class="form-control" id="organizer" placeholder="Nombre del organizador o institución" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Ubicación</label>
+                                <input type="text" class="form-control" id="location" placeholder="Ciudad, Estado, País">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Format and Rules -->
+            <div class="step-content" id="step2">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-gear me-2"></i>
+                            Formato y Reglas del Torneo
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Formato del Torneo *</label>
+                                <select class="form-select" id="tournamentFormat" onchange="updateFormatInfo()" required>
+                                    <option value="">Seleccionar formato</option>
+                                    <option value="liga">Liga (Todos contra Todos)</option>
+                                    <option value="eliminacion">Eliminación Directa</option>
+                                    <option value="grupos">Fase de Grupos + Eliminatorias</option>
+                                    <option value="suizo">Sistema Suizo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Número de Equipos *</label>
+                                <select class="form-select" id="numberOfTeams" onchange="calculateMatches()" required>
+                                    <option value="">Seleccionar cantidad</option>
+                                    <option value="4">4 equipos</option>
+                                    <option value="6">6 equipos</option>
+                                    <option value="8">8 equipos</option>
+                                    <option value="10">10 equipos</option>
+                                    <option value="12">12 equipos</option>
+                                    <option value="16">16 equipos</option>
+                                    <option value="20">20 equipos</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="alert alert-info" id="formatInfo" style="display: none;">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <span id="formatDescription"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Duración del Partido</label>
+                                <select class="form-select" id="matchDuration">
+                                    <option value="90">90 minutos (2 tiempos de 45')</option>
+                                    <option value="80">80 minutos (2 tiempos de 40')</option>
+                                    <option value="60">60 minutos (2 tiempos de 30')</option>
+                                    <option value="50">50 minutos (2 tiempos de 25')</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Jugadores por Equipo</label>
+                                <select class="form-select" id="playersPerTeam">
+                                    <option value="11">11 vs 11 (Fútbol tradicional)</option>
+                                    <option value="7">7 vs 7 (Fútbol 7)</option>
+                                    <option value="5">5 vs 5 (Fútbol sala)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Sustituciones Permitidas</label>
+                                <select class="form-select" id="substitutions">
+                                    <option value="5">5 sustituciones</option>
+                                    <option value="3">3 sustituciones</option>
+                                    <option value="unlimited">Ilimitadas</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Scoring Rules -->
+                            <div class="col-12">
+                                <h6 class="mb-3">Sistema de Puntuación</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Puntos por Victoria</label>
+                                        <input type="number" class="form-control" id="winPoints" value="3" min="1" max="5">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Puntos por Empate</label>
+                                        <input type="number" class="form-control" id="drawPoints" value="1" min="0" max="3">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Puntos por Derrota</label>
+                                        <input type="number" class="form-control" id="lossPoints" value="0" min="0" max="2">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Rules -->
+                            <div class="col-12">
+                                <h6 class="mb-3">Reglas Adicionales</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="allowExtraTime">
+                                            <label class="form-check-label" for="allowExtraTime">
+                                                Tiempo Extra en Eliminatorias
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="allowPenalties">
+                                            <label class="form-check-label" for="allowPenalties">
+                                                Penales en caso de empate
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="fairPlay">
+                                            <label class="form-check-label" for="fairPlay">
+                                                Premio Fair Play
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="mvpAward">
+                                            <label class="form-check-label" for="mvpAward">
+                                                Premio Mejor Jugador
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Teams and Dates -->
+            <div class="step-content" id="step3">
+                <div class="row g-4">
+                    <!-- Tournament Dates -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-calendar me-2"></i>
+                                    Fechas del Torneo
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Fecha de Inicio *</label>
+                                        <input type="date" class="form-control" id="startDate" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Fecha de Finalización</label>
+                                        <input type="date" class="form-control" id="endDate">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Fecha Límite de Inscripción</label>
+                                        <input type="date" class="form-control" id="registrationDeadline">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Registration -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-people me-2"></i>
+                                    Equipos Participantes
+                                </h5>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addTeamSlot()">
+                                    <i class="bi bi-plus me-1"></i>Agregar Equipo
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="teamRegistration" id="openRegistration" value="open" checked>
+                                        <label class="form-check-label" for="openRegistration">
+                                            <strong>Inscripción Abierta</strong> - Los equipos se pueden registrar libremente
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="teamRegistration" id="inviteOnly" value="invite">
+                                        <label class="form-check-label" for="inviteOnly">
+                                            <strong>Solo por Invitación</strong> - Seleccionar equipos específicos
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="teamsList">
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle me-2"></i>
+                                        Con inscripción abierta, los equipos podrán registrarse hasta la fecha límite establecida.
+                                    </div>
+                                </div>
+
+                                <div id="inviteTeams" style="display: none;">
+                                    <h6 class="mb-3">Equipos Invitados</h6>
+                                    <div id="invitedTeamsList">
+                                        <!-- Teams will be added here dynamically -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prize Configuration -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-award me-2"></i>
+                                    Premios y Reconocimientos
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Premio 1er Lugar</label>
+                                        <input type="text" class="form-control" id="firstPrize" placeholder="Ej: $5,000 + Trofeo">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Premio 2do Lugar</label>
+                                        <input type="text" class="form-control" id="secondPrize" placeholder="Ej: $3,000 + Medalla">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Premio 3er Lugar</label>
+                                        <input type="text" class="form-control" id="thirdPrize" placeholder="Ej: $1,000 + Medalla">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Premio Goleador</label>
+                                        <input type="text" class="form-control" id="topScorerPrize" placeholder="Ej: Bota de Oro + $500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Review -->
+            <div class="step-content" id="step4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="bi bi-check-circle me-2"></i>
+                            Revisión Final
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Revisa toda la información antes de crear el torneo. Podrás modificar algunos aspectos después de la creación.
+                        </div>
+
+                        <div id="reviewContent">
+                            <!-- Review content will be populated by JavaScript -->
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="termsAccepted" required>
+                                <label class="form-check-label" for="termsAccepted">
+                                    Acepto los <a href="#" target="_blank">términos y condiciones</a> de TorneoManager Pro
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-outline-secondary" id="prevBtn" onclick="changeStep(-1)" style="display: none;">
+                    <i class="bi bi-arrow-left me-2"></i>Anterior
+                </button>
+                <div class="ms-auto">
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">
+                        Siguiente <i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                        <i class="bi bi-check-circle me-2"></i>Crear Torneo
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h4 class="mb-3">¡Torneo Creado Exitosamente!</h4>
+                    <p class="text-muted mb-4">Tu torneo ha sido configurado y está listo para recibir inscripciones de equipos.</p>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <a href="torneo.html" class="btn btn-primary">
+                            <i class="bi bi-eye me-2"></i>Ver Torneo
+                        </a>
+                        <a href="torneos.html" class="btn btn-outline-secondary">
+                            <i class="bi bi-list me-2"></i>Todos los Torneos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-trophy-fill text-primary me-2"></i>
+                        TorneoManager Pro
+                    </h5>
+                    <p class="text-light">La plataforma más avanzada para gestionar torneos de fútbol. Organiza, administra y disfruta de tus competiciones deportivas.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Plataforma</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="torneos.html" class="text-light text-decoration-none">Torneos</a></li>
+                        <li class="mb-2"><a href="equipos.html" class="text-light text-decoration-none">Equipos</a></li>
+                        <li class="mb-2"><a href="jugadores.html" class="text-light text-decoration-none">Jugadores</a></li>
+                        <li class="mb-2"><a href="estadisticas.html" class="text-light text-decoration-none">Estadísticas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Recursos</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Ayuda</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Documentación</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">API</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Empresa</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Acerca de</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Contacto</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Carreras</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Prensa</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Privacidad</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Términos</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Cookies</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Licencias</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-light">&copy; 2024 TorneoManager Pro. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-light">Hecho con ❤️ para la comunidad deportiva</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('startDate').min = today;
+            document.getElementById('endDate').min = today;
+            document.getElementById('registrationDeadline').min = today;
+
+            // Team registration type change
+            document.querySelectorAll('input[name="teamRegistration"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const inviteTeams = document.getElementById('inviteTeams');
+                    const teamsList = document.getElementById('teamsList');
+                    
+                    if (this.value === 'invite') {
+                        inviteTeams.style.display = 'block';
+                        teamsList.style.display = 'none';
+                    } else {
+                        inviteTeams.style.display = 'none';
+                        teamsList.style.display = 'block';
+                    }
+                });
+            });
+        });
+
+        function changeStep(direction) {
+            if (direction === 1 && !validateCurrentStep()) {
+                return;
+            }
+
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.querySelector(`.step-item:nth-child(${currentStep})`).classList.remove('active');
+
+            // Update step
+            currentStep += direction;
+
+            // Show new step
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            document.querySelector(`.step-item:nth-child(${currentStep})`).classList.add('active');
+
+            // Update buttons
+            updateButtons();
+
+            // If step 4, populate review
+            if (currentStep === 4) {
+                populateReview();
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+            nextBtn.style.display = currentStep < totalSteps ? 'block' : 'none';
+            submitBtn.style.display = currentStep === totalSteps ? 'block' : 'none';
+        }
+
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('[required]');
+            
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {
+                    field.focus();
+                    field.classList.add('is-invalid');
+                    return false;
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            }
+            return true;
+        }
+
+        function updateFormatInfo() {
+            const format = document.getElementById('tournamentFormat').value;
+            const formatInfo = document.getElementById('formatInfo');
+            const formatDescription = document.getElementById('formatDescription');
+            
+            const descriptions = {
+                'liga': 'Todos los equipos juegan entre sí una vez. El equipo con más puntos gana.',
+                'eliminacion': 'Los equipos se eliminan en cada ronda hasta que quede un ganador.',
+                'grupos': 'Los equipos se dividen en grupos, luego los mejores avanzan a eliminatorias.',
+                'suizo': 'Los equipos juegan un número fijo de rondas contra oponentes de nivel similar.'
+            };
+
+            if (format && descriptions[format]) {
+                formatDescription.textContent = descriptions[format];
+                formatInfo.style.display = 'block';
+            } else {
+                formatInfo.style.display = 'none';
+            }
+        }
+
+        function calculateMatches() {
+            const teams = parseInt(document.getElementById('numberOfTeams').value);
+            const format = document.getElementById('tournamentFormat').value;
+            
+            if (teams && format) {
+                let matches = 0;
+                switch (format) {
+                    case 'liga':
+                        matches = (teams * (teams - 1)) / 2;
+                        break;
+                    case 'eliminacion':
+                        matches = teams - 1;
+                        break;
+                    case 'grupos':
+                        matches = Math.floor(teams * 1.5); // Approximation
+                        break;
+                    case 'suizo':
+                        matches = teams * 3; // Approximation
+                        break;
+                }
+                
+                if (matches > 0) {
+                    const formatInfo = document.getElementById('formatInfo');
+                    const formatDescription = document.getElementById('formatDescription');
+                    formatDescription.textContent += ` Se jugarán aproximadamente ${matches} partidos.`;
+                    formatInfo.style.display = 'block';
+                }
+            }
+        }
+
+        function addTeamSlot() {
+            const invitedTeamsList = document.getElementById('invitedTeamsList');
+            const teamCount = invitedTeamsList.children.length + 1;
+            
+            const teamSlot = document.createElement('div');
+            teamSlot.className = 'mb-3 team-slot';
+            teamSlot.innerHTML = `
+                <div class="d-flex gap-2">
+                    <input type="text" class="form-control" placeholder="Nombre del equipo ${teamCount}" name="invitedTeam[]">
+                    <button type="button" class="btn btn-outline-danger" onclick="removeTeamSlot(this)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            invitedTeamsList.appendChild(teamSlot);
+        }
+
+        function removeTeamSlot(button) {
+            button.closest('.team-slot').remove();
+        }
+
+        function populateReview() {
+            const reviewContent = document.getElementById('reviewContent');
+            const formData = new FormData(document.getElementById('tournamentForm'));
+            
+            const tournamentName = document.getElementById('tournamentName').value;
+            const tournamentIcon = document.getElementById('tournamentIcon').value;
+            const category = document.getElementById('tournamentCategory').value;
+            const format = document.getElementById('tournamentFormat').value;
+            const teams = document.getElementById('numberOfTeams').value;
+            const startDate = document.getElementById('startDate').value;
+            
+            reviewContent.innerHTML = `
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6>Información Básica</h6>
+                        <table class="table table-sm">
+                            <tr><td>Nombre:</td><td><strong>${tournamentIcon} ${tournamentName}</strong></td></tr>
+                            <tr><td>Categoría:</td><td>${category}</td></tr>
+                            <tr><td>Organizador:</td><td>${document.getElementById('organizer').value}</td></tr>
+                            <tr><td>Ubicación:</td><td>${document.getElementById('location').value || 'No especificada'}</td></tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Formato y Reglas</h6>
+                        <table class="table table-sm">
+                            <tr><td>Formato:</td><td>${format}</td></tr>
+                            <tr><td>Equipos:</td><td>${teams}</td></tr>
+                            <tr><td>Duración:</td><td>${document.getElementById('matchDuration').value} minutos</td></tr>
+                            <tr><td>Jugadores:</td><td>${document.getElementById('playersPerTeam').value} vs ${document.getElementById('playersPerTeam').value}</td></tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Fechas</h6>
+                        <table class="table table-sm">
+                            <tr><td>Inicio:</td><td>${startDate ? new Date(startDate).toLocaleDateString() : 'No especificada'}</td></tr>
+                            <tr><td>Fin:</td><td>${document.getElementById('endDate').value ? new Date(document.getElementById('endDate').value).toLocaleDateString() : 'No especificada'}</td></tr>
+                            <tr><td>Límite inscripción:</td><td>${document.getElementById('registrationDeadline').value ? new Date(document.getElementById('registrationDeadline').value).toLocaleDateString() : 'No especificada'}</td></tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Puntuación</h6>
+                        <table class="table table-sm">
+                            <tr><td>Victoria:</td><td>${document.getElementById('winPoints').value} puntos</td></tr>
+                            <tr><td>Empate:</td><td>${document.getElementById('drawPoints').value} puntos</td></tr>
+                            <tr><td>Derrota:</td><td>${document.getElementById('lossPoints').value} puntos</td></tr>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Form submission
+        document.getElementById('tournamentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!document.getElementById('termsAccepted').checked) {
+                alert('Debes aceptar los términos y condiciones');
+                return;
+            }
+            
+            // Simulate tournament creation
+            setTimeout(() => {
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+            }, 1000);
+        });
+    </script>
+
+    <style>
+        .step-item {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item.active .step-number {
+            background: #0d6efd;
+            color: white;
+        }
+        
+        .step-title {
+            font-size: 0.9rem;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item.active .step-title {
+            color: #0d6efd;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            display: none;
+        }
+        
+        .step-content.active {
+            display: block;
+        }
+        
+        .team-slot {
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+        
+        @media (max-width: 768px) {
+            .step-item {
+                padding: 10px 0;
+            }
+            
+            .step-number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .step-title {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98268f5317a583ea',t:'MTc1ODQyNjIyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
