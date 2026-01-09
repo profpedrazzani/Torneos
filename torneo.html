@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Primavera 2024 - TorneoManager Pro</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-glass shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <div class="brand-icon">
+                    <i class="bi bi-trophy-fill"></i>
+                </div>
+                <span>TorneoManager <span class="text-primary">Pro</span></span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link px-3 active" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="torneos.html">Torneos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="equipos.html">Equipos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="estadisticas.html">Estadísticas</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-2">
+                    <a href="login.html" class="btn btn-link text-dark text-decoration-none fw-medium">Ingresar</a>
+                    <a href="registro.html" class="btn btn-primary rounded-pill px-4 shadow-sm">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5 mt-5">
+
+        <div class="card mb-4 border-0 overflow-hidden shadow-sm">
+            <div class="tournament-header-bg" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/pexels-soccer-field.jpg') center/cover;">
+                <div class="container py-5 text-white">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <a href="index.html" class="btn btn-sm btn-outline-light rounded-pill">
+                            <i class="bi bi-arrow-left me-2"></i>Volver
+                        </a>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-light rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="bi bi-gear-fill me-1"></i> Gestión
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-share me-2"></i>Compartir</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Eliminar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <span class="badge bg-success mb-2 px-3 py-2 rounded-pill shadow-sm live-indicator">
+                                <i class="bi bi-record-fill me-1"></i> EN CURSO
+                            </span>
+                            <h1 class="display-4 fw-bold mb-1">Copa Primavera 2024</h1>
+                            <p class="lead opacity-75">Liga Regional • 8 Equipos en competencia</p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <div class="bg-white bg-opacity-25 backdrop-blur p-3 rounded-4 border border-white border-opacity-25">
+                                <small class="d-block opacity-75">Premio Mayor</small>
+                                <h2 class="fw-bold mb-0 text-warning">$50,000</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tournament Stats -->
+        <div class="row g-4 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-people text-primary mb-2" style="font-size: 2rem;"></i>
+                        <h4 class="mb-1">8</h4>
+                        <small class="text-muted">Equipos</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-calendar-event text-success mb-2" style="font-size: 2rem;"></i>
+                        <h4 class="mb-1">15</h4>
+                        <small class="text-muted">Partidos Jugados</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-bullseye text-warning mb-2" style="font-size: 2rem;"></i>
+                        <h4 class="mb-1">47</h4>
+                        <small class="text-muted">Goles Totales</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="bi bi-eye text-info mb-2" style="font-size: 2rem;"></i>
+                        <h4 class="mb-1">2,340</h4>
+                        <small class="text-muted">Espectadores</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4"><i class="bi bi-fire text-danger me-2"></i>Máximos Goleadores</h5>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold me-2 text-primary">1.</span>
+                                    <img src="img/player-placeholder.png" class="rounded-circle me-2" width="30" height="30" onerror="this.src='https://ui-avatars.com/api/?name=Lionel+Messi&background=0D6EFD&color=fff'">
+                                    <span class="fw-medium">Lionel Messi</span>
+                                    <small class="text-muted ms-2">(Águilas FC)</small>
+                                </div>
+                                <span class="fw-bold">12</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <div class="d-flex align-items-center">
+                                    <span class="fw-bold me-2 text-muted">2.</span>
+                                    <span class="fw-medium">Julián Álvarez</span>
+                                    <small class="text-muted ms-2">(Calchín FC)</small>
+                                </div>
+                                <span class="fw-bold">9</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-primary opacity-75" role="progressbar" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4"><i class="bi bi-shield-lock-fill text-success me-2"></i>Valla Menos Vencida</h5>
+                        <div class="table-responsive">
+                            <table class="table table-borderless align-middle">
+                                <thead>
+                                    <tr class="text-muted small">
+                                        <th>Portero</th>
+                                        <th class="text-center">PJ</th>
+                                        <th class="text-center">Goles Rec.</th>
+                                        <th class="text-center">Invictas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="fw-bold">Franco Armani</div>
+                                            <small class="text-muted">Águilas FC</small>
+                                        </td>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center text-danger">4</td>
+                                        <td class="text-center fw-bold text-success">6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="fw-bold">Dibu Martínez</div>
+                                            <small class="text-muted">Leones del Sur</small>
+                                        </td>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center text-danger">6</td>
+                                        <td class="text-center fw-bold text-success">5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tournament Tabs -->
+        <ul class="nav nav-pills nav-fill mb-4 p-1 bg-white shadow-sm rounded-pill" id="tournamentTabs" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active rounded-pill" data-bs-toggle="tab" data-bs-target="#posiciones">Posiciones</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link rounded-pill" data-bs-toggle="tab" data-bs-target="#fixture">Fixture</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link rounded-pill" data-bs-toggle="tab" data-bs-target="#equipos">Equipos</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link rounded-pill" data-bs-toggle="tab" data-bs-target="#stats">Estadísticas</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="tournamentTabsContent">
+
+            <div class="tab-pane fade show active" id="posiciones" role="tabpanel">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr class="text-muted small uppercase-tracking">
+                                    <th class="ps-4" style="width: 70px;">POS</th>
+                                    <th>EQUIPO</th>
+                                    <th class="text-center">PJ</th>
+                                    <th class="text-center">G</th>
+                                    <th class="text-center">E</th>
+                                    <th class="text-center">P</th>
+                                    <th class="text-center">GF</th>
+                                    <th class="text-center">GC</th>
+                                    <th class="text-center">DG</th>
+                                    <th class="text-center bg-primary-subtle text-primary fw-bold">PTS</th>
+                                    <th class="ps-4 d-none d-md-table-cell">ÚLT. 5</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ps-4">
+                                        <span class="pos-badge top-1">1</span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="team-shield-table me-3">
+                                                <img src="img/logos/7.jpg" alt="Escudo" onerror="this.src='https://ui-avatars.com/api/?name=Aguilas&background=0D6EFD&color=fff'">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Águilas FC</h6>
+                                                <small class="text-muted d-md-none">PTS: 25</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center fw-medium">10</td>
+                                    <td class="text-center">8</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center text-muted">21</td>
+                                    <td class="text-center text-muted">6</td>
+                                    <td class="text-center">+12</td>
+                                    <td class="text-center bg-primary-subtle text-primary fw-bold">25</td>
+                                    <td class="ps-4 d-none d-md-table-cell">
+                                        <div class="d-flex gap-1">
+                                            <span class="v-dot win" title="Ganado"></span>
+                                            <span class="v-dot win" title="Ganado"></span>
+                                            <span class="v-dot draw" title="Empatado"></span>
+                                            <span class="v-dot win" title="Ganado"></span>
+                                            <span class="v-dot loss" title="Perdido"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="fixture">
+
+                <!-- Fecha -->
+                <div class="accordion border-0 shadow-sm rounded-4 overflow-hidden mb-3" id="fixtureAccordion">
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button fw-bold bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#fecha1">
+                                Fecha 1 <span class="badge bg-primary ms-2">Finalizada</span>
+                            </button>
+                        </h2>
+                        <div id="fecha1" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+
+                                <!-- Match -->
+                                <div class="match-item d-flex align-items-center justify-content-between p-3 border-bottom">
+                                    <div class="team-mini d-flex align-items-center flex-row-reverse text-end flex-grow-1">
+                                        <div class="team-shield-xs ms-2">A</div>
+                                        <span class="fw-bold">Águilas FC</span>
+                                    </div>
+                                    <div class="score-box mx-4 px-3 py-1 bg-dark text-white rounded-3 fw-bold">2 - 1</div>
+                                    <div class="team-mini d-flex align-items-center flex-grow-1">
+                                        <div class="team-shield-xs me-2">L</div>
+                                        <span class="fw-bold">Leones Sur</span>
+                                    </div>
+                                </div><!-- /Match -->
+
+                                <!-- Match -->
+                                <div class="match-item d-flex align-items-center justify-content-between p-3 border-bottom">
+                                    <div class="team-mini d-flex align-items-center flex-row-reverse text-end flex-grow-1">
+                                        <div class="team-shield-xs ms-2">A</div>
+                                        <span class="fw-bold">Calchín FC</span>
+                                    </div>
+                                    <div class="score-box mx-4 px-3 py-1 bg-dark text-white rounded-3 fw-bold">3 - 1</div>
+                                    <div class="team-mini d-flex align-items-center flex-grow-1">
+                                        <div class="team-shield-xs me-2">L</div>
+                                        <span class="fw-bold">Cubrelolas</span>
+                                    </div>
+                                </div><!-- /Match -->
+
+                                <!-- Match -->
+                                <div class="match-item d-flex align-items-center justify-content-between p-3 border-bottom">
+                                    <div class="team-mini d-flex align-items-center flex-row-reverse text-end flex-grow-1">
+                                        <div class="team-shield-xs ms-2">A</div>
+                                        <span class="fw-bold">Miranalgas</span>
+                                    </div>
+                                    <div class="score-box mx-4 px-3 py-1 bg-dark text-white rounded-3 fw-bold">2 - 2</div>
+                                    <div class="team-mini d-flex align-items-center flex-grow-1">
+                                        <div class="team-shield-xs me-2">L</div>
+                                        <span class="fw-bold">Miralolas</span>
+                                    </div>
+                                </div><!-- /Match -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fecha -->
+                <div class="accordion border-0 shadow-sm rounded-4 overflow-hidden mb-3" id="fixtureAccordion">
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button fw-bold bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#fecha2">
+                                Fecha 2 <span class="badge bg-primary ms-2">Finalizada</span>
+                            </button>
+                        </h2>
+                        <div id="fecha2" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="match-item d-flex align-items-center justify-content-between p-3 border-bottom">
+                                    <div class="team-mini d-flex align-items-center flex-row-reverse text-end flex-grow-1">
+                                        <div class="team-shield-xs ms-2">A</div>
+                                        <span class="fw-bold">Águilas FC</span>
+                                    </div>
+                                    <div class="score-box mx-4 px-3 py-1 bg-dark text-white rounded-3 fw-bold">2 - 1</div>
+                                    <div class="team-mini d-flex align-items-center flex-grow-1">
+                                        <div class="team-shield-xs me-2">L</div>
+                                        <span class="fw-bold">Leones Sur</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="equipos" role="tabpanel">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm rounded-4 team-participant-card h-100">
+                            <div class="card-body text-center p-4">
+                                <div class="shield-wrapper mb-3 mx-auto shadow-sm">
+                                    <img src="img/logos/7.jpg" class="img-fluid rounded-3" style="max-height: 100%; object-fit: contain;">
+                                </div>
+                                <h5 class="fw-bold mb-1">Águilas FC</h5>
+                                <p class="text-muted small mb-3">Buenos Aires, ARG</p>
+                                <a href="equipo-detalle.html" class="btn btn-outline-primary btn-sm rounded-pill w-100">Ver Perfil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="tab-pane fade" id="stats">
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                             <h5 class="fw-bold mb-4">Goleadores y Rendimiento</h5>
+                             </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="card border-0 shadow-sm rounded-4 p-4">
+                            <h5 class="fw-bold mb-4 text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Disciplina</h5>
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle small">
+                                    <thead>
+                                        <tr class="text-muted">
+                                            <th>Jugador</th>
+                                            <th class="text-center"><div class="card-yellow"></div></th>
+                                            <th class="text-center"><div class="card-red"></div></th>
+                                            <th>Sanción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>N. Otamendi</strong><br><span class="text-muted">Águilas</span></td>
+                                            <td class="text-center">2</td>
+                                            <td class="text-center">1</td>
+                                            <td><span class="badge bg-danger-subtle text-danger">1 Fecha</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>E. Fernández</strong><br><span class="text-muted">Águilas</span></td>
+                                            <td class="text-center">3</td>
+                                            <td class="text-center">0</td>
+                                            <td><span class="badge bg-warning-subtle text-warning">Advertido</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-trophy-fill text-primary me-2"></i>
+                        TorneoManager Pro
+                    </h5>
+                    <p class="text-light">La plataforma más avanzada para gestionar torneos de fútbol. Organiza, administra y disfruta de tus competiciones deportivas.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Plataforma</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="torneos.html" class="text-light text-decoration-none">Torneos</a></li>
+                        <li class="mb-2"><a href="equipos.html" class="text-light text-decoration-none">Equipos</a></li>
+                        <li class="mb-2"><a href="jugadores.html" class="text-light text-decoration-none">Jugadores</a></li>
+                        <li class="mb-2"><a href="estadisticas.html" class="text-light text-decoration-none">Estadísticas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Recursos</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Ayuda</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Documentación</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">API</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Empresa</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Acerca de</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Contacto</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Carreras</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Prensa</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Privacidad</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Términos</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Cookies</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Licencias</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-light">&copy; 2024 TorneoManager Pro. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-light">Hecho con ❤️ para la comunidad deportiva</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <script>
+        function editTournament() {
+            alert('Función de edición en desarrollo');
+        }
+        
+        function shareTournament() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Copa Primavera 2024',
+                    text: 'Mira este torneo en TorneoManager Pro',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Enlace copiado al portapapeles');
+            }
+        }
+    </script>
+</body>
+</html>
