@@ -13,462 +13,177 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-glass shadow-sm">
         <div class="container">
-            <a class="navbar-brand text-primary" href="index.html">
-                <i class="bi bi-trophy-fill me-2"></i>
-                TorneoManager Pro
+            <a class="navbar-brand fw-bold" href="index.html">
+                <div class="brand-icon">
+                    <i class="bi bi-trophy-fill"></i>
+                </div>
+                <span>TorneoManager <span class="text-primary">Pro</span></span>
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2"></i>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="bi bi-house-fill me-1"></i>Inicio
-                        </a>
+                        <a class="nav-link px-3" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="torneos.html">
-                            <i class="bi bi-trophy me-1"></i>Torneos
-                        </a>
+                        <a class="nav-link px-3" href="torneos.html">Torneos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="equipos.html">
-                            <i class="bi bi-people-fill me-1"></i>Equipos
-                        </a>
+                        <a class="nav-link px-3" href="equipos.html">Equipos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="jugadores.html">
-                            <i class="bi bi-person-fill me-1"></i>Jugadores
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="estadisticas.html">
-                            <i class="bi bi-graph-up me-1"></i>Estadísticas
-                        </a>
+                        <a class="nav-link active" href="crear-torneo.html">Crear Torneo</a>
                     </li>
                 </ul>
                 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary ms-2" href="registro.html">Registrarse</a>
-                    </li>
-                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="login.html" class="btn btn-link text-dark text-decoration-none fw-medium">Ingresar</a>
+                    <a href="registro.html" class="btn btn-primary rounded-pill px-4 shadow-sm">Registrarse</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container py-5">
-        <!-- Header -->
-        <div class="row mb-4">
-            <div class="col">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h1 class="mb-2">
-                            <i class="bi bi-plus-circle text-primary me-3"></i>
-                            Crear Nuevo Torneo
-                        </h1>
-                        <p class="text-muted mb-0">Configura todos los detalles de tu torneo de fútbol</p>
-                    </div>
-                    <a href="torneos.html" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left me-2"></i>Volver a Torneos
-                    </a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Progress Steps -->
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="row text-center">
-                    <div class="col-md-3">
-                        <div class="step-item active">
-                            <div class="step-number">1</div>
-                            <div class="step-title">Información Básica</div>
-                        </div>
+    <div class="container py-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10"> <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-header bg-primary py-4 text-center">
+                        <h2 class="text-white fw-bold mb-0">Configuración Avanzada del Torneo</h2>
                     </div>
-                    <div class="col-md-3">
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div class="step-title">Formato y Reglas</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-title">Equipos y Fechas</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="step-item">
-                            <div class="step-number">4</div>
-                            <div class="step-title">Revisión Final</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tournament Creation Form -->
-        <form id="tournamentForm">
-            <!-- Step 1: Basic Information -->
-            <div class="step-content active" id="step1">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">
-                            <i class="bi bi-info-circle me-2"></i>
-                            Información Básica del Torneo
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-4">
-                            <div class="col-md-8">
-                                <label class="form-label">Nombre del Torneo *</label>
-                                <input type="text" class="form-control" id="tournamentName" placeholder="Ej: Copa Primavera 2024" required>
-                                <div class="form-text">Este será el nombre oficial que aparecerá en todos los documentos</div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Emoji/Icono</label>
-                                <select class="form-select" id="tournamentIcon">
-                                    <option value="🏆">🏆 Copa</option>
-                                    <option value="⚽">⚽ Balón</option>
-                                    <option value="🥇">🥇 Medalla</option>
-                                    <option value="🌟">🌟 Estrella</option>
-                                    <option value="🔥">🔥 Fuego</option>
-                                    <option value="⚡">⚡ Rayo</option>
-                                    <option value="🎯">🎯 Diana</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Descripción</label>
-                                <textarea class="form-control" id="tournamentDescription" rows="3" placeholder="Describe el torneo, sus objetivos y características especiales..."></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Categoría *</label>
-                                <select class="form-select" id="tournamentCategory" required>
-                                    <option value="">Seleccionar categoría</option>
-                                    <option value="profesional">Profesional</option>
-                                    <option value="amateur">Amateur</option>
-                                    <option value="juvenil">Juvenil</option>
-                                    <option value="infantil">Infantil</option>
-                                    <option value="veteranos">Veteranos</option>
-                                    <option value="femenil">Femenil</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Nivel de Competencia</label>
-                                <select class="form-select" id="competitionLevel">
-                                    <option value="local">Local</option>
-                                    <option value="regional">Regional</option>
-                                    <option value="nacional">Nacional</option>
-                                    <option value="internacional">Internacional</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Organizador *</label>
-                                <input type="text" class="form-control" id="organizer" placeholder="Nombre del organizador o institución" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Ubicación</label>
-                                <input type="text" class="form-control" id="location" placeholder="Ciudad, Estado, País">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: Format and Rules -->
-            <div class="step-content" id="step2">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">
-                            <i class="bi bi-gear me-2"></i>
-                            Formato y Reglas del Torneo
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label class="form-label">Formato del Torneo *</label>
-                                <select class="form-select" id="tournamentFormat" onchange="updateFormatInfo()" required>
-                                    <option value="">Seleccionar formato</option>
-                                    <option value="liga">Liga (Todos contra Todos)</option>
-                                    <option value="eliminacion">Eliminación Directa</option>
-                                    <option value="grupos">Fase de Grupos + Eliminatorias</option>
-                                    <option value="suizo">Sistema Suizo</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Número de Equipos *</label>
-                                <select class="form-select" id="numberOfTeams" onchange="calculateMatches()" required>
-                                    <option value="">Seleccionar cantidad</option>
-                                    <option value="4">4 equipos</option>
-                                    <option value="6">6 equipos</option>
-                                    <option value="8">8 equipos</option>
-                                    <option value="10">10 equipos</option>
-                                    <option value="12">12 equipos</option>
-                                    <option value="16">16 equipos</option>
-                                    <option value="20">20 equipos</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <div class="alert alert-info" id="formatInfo" style="display: none;">
-                                    <i class="bi bi-info-circle me-2"></i>
-                                    <span id="formatDescription"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Duración del Partido</label>
-                                <select class="form-select" id="matchDuration">
-                                    <option value="90">90 minutos (2 tiempos de 45')</option>
-                                    <option value="80">80 minutos (2 tiempos de 40')</option>
-                                    <option value="60">60 minutos (2 tiempos de 30')</option>
-                                    <option value="50">50 minutos (2 tiempos de 25')</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Jugadores por Equipo</label>
-                                <select class="form-select" id="playersPerTeam">
-                                    <option value="11">11 vs 11 (Fútbol tradicional)</option>
-                                    <option value="7">7 vs 7 (Fútbol 7)</option>
-                                    <option value="5">5 vs 5 (Fútbol sala)</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Sustituciones Permitidas</label>
-                                <select class="form-select" id="substitutions">
-                                    <option value="5">5 sustituciones</option>
-                                    <option value="3">3 sustituciones</option>
-                                    <option value="unlimited">Ilimitadas</option>
-                                </select>
-                            </div>
+                    <div class="card-body p-4 p-md-5">
+                        <form id="createTournamentForm">
                             
-                            <!-- Scoring Rules -->
-                            <div class="col-12">
-                                <h6 class="mb-3">Sistema de Puntuación</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <label class="form-label">Puntos por Victoria</label>
-                                        <input type="number" class="form-control" id="winPoints" value="3" min="1" max="5">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Puntos por Empate</label>
-                                        <input type="number" class="form-control" id="drawPoints" value="1" min="0" max="3">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Puntos por Derrota</label>
-                                        <input type="number" class="form-control" id="lossPoints" value="0" min="0" max="2">
+                            <div class="row mb-5">
+                                <div class="col-md-4 text-center mb-4 mb-md-0">
+                                    <label class="fw-bold d-block mb-3">Logo del Torneo</label>
+                                    <div class="upload-container mx-auto" onclick="document.getElementById('logoInput').click()">
+                                        <input type="file" id="logoInput" hidden accept="image/*" onchange="previewImage(this)">
+                                        <div id="previewArea">
+                                            <i class="bi bi-cloud-arrow-up fs-1 text-primary"></i>
+                                            <p class="small text-muted">Subir imagen</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Additional Rules -->
-                            <div class="col-12">
-                                <h6 class="mb-3">Reglas Adicionales</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="allowExtraTime">
-                                            <label class="form-check-label" for="allowExtraTime">
-                                                Tiempo Extra en Eliminatorias
-                                            </label>
+                                <div class="col-md-8">
+                                    <h5 class="text-primary fw-bold mb-3">Información Básica</h5>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <input type="text" class="form-control bg-light border-0" placeholder="Nombre del Torneo">
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="allowPenalties">
-                                            <label class="form-check-label" for="allowPenalties">
-                                                Penales en caso de empate
-                                            </label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control bg-light border-0" placeholder="Ciudad/Provincia">
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="fairPlay">
-                                            <label class="form-check-label" for="fairPlay">
-                                                Premio Fair Play
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="mvpAward">
-                                            <label class="form-check-label" for="mvpAward">
-                                                Premio Mejor Jugador
-                                            </label>
+                                        <div class="col-md-6">
+                                            <select class="form-select bg-light border-0">
+                                                <option selected>Categoría</option>
+                                                <option>Profesional</option>
+                                                <option>Amateur</option>
+                                                <option>Juvenil</option>
+                                                <option>Infantil</option>
+                                                <option>Senior</option>
+                                                <option>Femenil</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Step 3: Teams and Dates -->
-            <div class="step-content" id="step3">
-                <div class="row g-4">
-                    <!-- Tournament Dates -->
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">
-                                    <i class="bi bi-calendar me-2"></i>
-                                    Fechas del Torneo
-                                </h5>
+                            <div class="mb-5 p-4 bg-light rounded-4">
+                                <h5 class="fw-bold mb-4 text-dark"><i class="bi bi-diagram-3 me-2"></i>Sistema de Juego</h5>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Tipo de Torneo</label>
+                                        <select class="form-select border-0 shadow-sm">
+                                            <option>Todos contra todos (Liga)</option>
+                                            <option>Eliminación directa (Playoff)</option>
+                                            <option>Grupos y Eliminación directa</option>
+                                            <option>Grupos y Grupo Final</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Puntos (G / E / P)</label>
+                                        <div class="d-flex gap-2">
+                                            <input type="number" class="form-control border-0 shadow-sm text-center" value="3" title="Ganador">
+                                            <input type="number" class="form-control border-0 shadow-sm text-center" value="1" title="Empate">
+                                            <input type="number" class="form-control border-0 shadow-sm text-center" value="0" title="Perdedor">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
+
+                            <div class="mb-5">
+                                <h5 class="text-primary fw-bold mb-4 border-bottom pb-2">Reglamento Técnico</h5>
                                 <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <label class="form-label">Fecha de Inicio *</label>
-                                        <input type="date" class="form-control" id="startDate" required>
+                                    <div class="col-md-3">
+                                        <label class="small fw-bold">Duración (minutos)</label>
+                                        <input type="number" class="form-control bg-light border-0" placeholder="Ej: 90">
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Fecha de Finalización</label>
-                                        <input type="date" class="form-control" id="endDate">
+                                    <div class="col-md-3">
+                                        <label class="small fw-bold">Jugadores por equipo</label>
+                                        <input type="number" class="form-control bg-light border-0" placeholder="Ej: 11">
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Fecha Límite de Inscripción</label>
-                                        <input type="date" class="form-control" id="registrationDeadline">
+                                    <div class="col-md-3">
+                                        <label class="small fw-bold">Sustituciones</label>
+                                        <input type="number" class="form-control bg-light border-0" placeholder="Ej: 5">
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Team Registration -->
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">
-                                    <i class="bi bi-people me-2"></i>
-                                    Equipos Participantes
-                                </h5>
-                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addTeamSlot()">
-                                    <i class="bi bi-plus me-1"></i>Agregar Equipo
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="teamRegistration" id="openRegistration" value="open" checked>
-                                        <label class="form-check-label" for="openRegistration">
-                                            <strong>Inscripción Abierta</strong> - Los equipos se pueden registrar libremente
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="teamRegistration" id="inviteOnly" value="invite">
-                                        <label class="form-check-label" for="inviteOnly">
-                                            <strong>Solo por Invitación</strong> - Seleccionar equipos específicos
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div id="teamsList">
-                                    <div class="alert alert-info">
-                                        <i class="bi bi-info-circle me-2"></i>
-                                        Con inscripción abierta, los equipos podrán registrarse hasta la fecha límite establecida.
-                                    </div>
-                                </div>
-
-                                <div id="inviteTeams" style="display: none;">
-                                    <h6 class="mb-3">Equipos Invitados</h6>
-                                    <div id="invitedTeamsList">
-                                        <!-- Teams will be added here dynamically -->
+                                    <div class="col-md-3">
+                                        <label class="small fw-bold">Desempate</label>
+                                        <select class="form-select bg-light border-0">
+                                            <option>Penales directos</option>
+                                            <option>Tiempo extra + Penales</option>
+                                            <option>Gol de oro</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Prize Configuration -->
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">
-                                    <i class="bi bi-award me-2"></i>
-                                    Premios y Reconocimientos
-                                </h5>
-                            </div>
-                            <div class="card-body">
+                            <div class="mb-5">
+                                <h5 class="text-primary fw-bold mb-3">Premios y Reconocimientos</h5>
                                 <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Premio 1er Lugar</label>
-                                        <input type="text" class="form-control" id="firstPrize" placeholder="Ej: $5,000 + Trofeo">
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check custom-card-check">
+                                            <input class="form-check-input" type="checkbox" id="p1">
+                                            <label class="form-check-label" for="p1">Goleador</label>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Premio 2do Lugar</label>
-                                        <input type="text" class="form-control" id="secondPrize" placeholder="Ej: $3,000 + Medalla">
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check custom-card-check">
+                                            <input class="form-check-input" type="checkbox" id="p2">
+                                            <label class="form-check-label" for="p2">Valla Invicta</label>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Premio 3er Lugar</label>
-                                        <input type="text" class="form-control" id="thirdPrize" placeholder="Ej: $1,000 + Medalla">
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check custom-card-check">
+                                            <input class="form-check-input" type="checkbox" id="p3">
+                                            <label class="form-check-label" for="p3">Fair Play</label>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Premio Goleador</label>
-                                        <input type="text" class="form-control" id="topScorerPrize" placeholder="Ej: Bota de Oro + $500">
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check custom-card-check">
+                                            <input class="form-check-input" type="checkbox" id="p4">
+                                            <label class="form-check-label" for="p4">Mejor Jugador</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill py-3 fw-bold">
+                                CREAR TORNEO AHORA
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-
-            <!-- Step 4: Review -->
-            <div class="step-content" id="step4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">
-                            <i class="bi bi-check-circle me-2"></i>
-                            Revisión Final
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-success">
-                            <i class="bi bi-info-circle me-2"></i>
-                            Revisa toda la información antes de crear el torneo. Podrás modificar algunos aspectos después de la creación.
-                        </div>
-
-                        <div id="reviewContent">
-                            <!-- Review content will be populated by JavaScript -->
-                        </div>
-
-                        <div class="mt-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="termsAccepted" required>
-                                <label class="form-check-label" for="termsAccepted">
-                                    Acepto los <a href="#" target="_blank">términos y condiciones</a> de TorneoManager Pro
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="d-flex justify-content-between mt-4">
-                <button type="button" class="btn btn-outline-secondary" id="prevBtn" onclick="changeStep(-1)" style="display: none;">
-                    <i class="bi bi-arrow-left me-2"></i>Anterior
-                </button>
-                <div class="ms-auto">
-                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">
-                        Siguiente <i class="bi bi-arrow-right ms-2"></i>
-                    </button>
-                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
-                        <i class="bi bi-check-circle me-2"></i>Crear Torneo
-                    </button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
+
 
     <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1">
@@ -566,6 +281,8 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/SCRIPTS.js"></script>
+
     <script>
         let currentStep = 1;
         const totalSteps = 4;
