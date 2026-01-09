@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Águilas FC - TorneoManager Pro</title>
+    <title>TorneoManager Pro - Inicio</title>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,670 +12,226 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-glass shadow-sm">
         <div class="container">
-            <a class="navbar-brand text-primary" href="index.html">
-                <i class="bi bi-trophy-fill me-2"></i>
-                TorneoManager Pro
+            <a class="navbar-brand fw-bold" href="index.html">
+                <div class="brand-icon">
+                    <i class="bi bi-trophy-fill"></i>
+                </div>
+                <span>TorneoManager <span class="text-primary">Pro</span></span>
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-2"></i>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="bi bi-house-fill me-1"></i>Inicio
-                        </a>
+                        <a class="nav-link px-3 active" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="torneos.html">
-                            <i class="bi bi-trophy me-1"></i>Torneos
-                        </a>
+                        <a class="nav-link px-3" href="torneos.html">Torneos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="equipos.html">
-                            <i class="bi bi-people-fill me-1"></i>Equipos
-                        </a>
+                        <a class="nav-link px-3" href="equipos.html">Equipos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="jugadores.html">
-                            <i class="bi bi-person-fill me-1"></i>Jugadores
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="estadisticas.html">
-                            <i class="bi bi-graph-up me-1"></i>Estadísticas
-                        </a>
+                        <a class="nav-link px-3" href="estadisticas.html">Estadísticas</a>
                     </li>
                 </ul>
                 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary ms-2" href="registro.html">Registrarse</a>
-                    </li>
-                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="login.html" class="btn btn-link text-dark text-decoration-none fw-medium">Ingresar</a>
+                    <a href="registro.html" class="btn btn-primary rounded-pill px-4 shadow-sm">Registrarse</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container py-5">
-        <!-- Team Header -->
-        <div class="card mb-4">
-            <div class="card-body p-5">
-                <div class="d-flex justify-content-between align-items-start mb-4">
-                    <a href="equipos.html" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left me-2"></i>Volver a Equipos
-                    </a>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="bi bi-three-dots me-2"></i>Acciones
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="editTeam()">
-                                <i class="bi bi-pencil me-2"></i>Editar Equipo
-                            </a></li>
-                            <li><a class="dropdown-item" href="#" onclick="shareTeam()">
-                                <i class="bi bi-share me-2"></i>Compartir
-                            </a></li>
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addPlayerModal">
-                                <i class="bi bi-person-plus me-2"></i>Agregar Jugador
-                            </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="#">
-                                <i class="bi bi-trash me-2"></i>Eliminar
-                            </a></li>
-                        </ul>
+    <header class="team-header position-relative">
+        <div class="team-banner" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./img/pexels-soccer-field-2.jpg') center/cover;">
+            <div class="container h-100 d-flex align-items-end pb-5">
+                <div class="team-profile-info d-flex align-items-center w-100">
+                    <div class="team-shield-main shadow-lg">
+                        <img src="img/logos/7.jpg" alt="Escudo" id="teamLogoMain" onerror="this.src='https://via.placeholder.com/150?text=AFC'">
                     </div>
-                </div>
-
-                <div class="row align-items-center">
-                    <div class="col-auto">
-                        <div class="display-1">🦅</div>
+                    <div class="ms-4 text-white">
+                        <h1 class="display-5 fw-bold mb-0">Águilas FC</h1>
+                        <p class="lead mb-0"><i class="bi bi-geo-alt me-2"></i>Buenos Aires, Argentina • <span class="badge bg-primary">Categoría Senior</span></p>
                     </div>
-                    <div class="col">
-                        <h1 class="mb-2">Águilas FC</h1>
-                        <p class="text-muted mb-3">Equipo fundado en 2018, especializado en fútbol ofensivo</p>
-                        <div class="d-flex flex-wrap gap-2 mb-3">
-                            <span class="badge bg-success">Activo</span>
-                            <span class="badge bg-info">Copa Primavera 2024</span>
-                            <span class="badge bg-warning">1° Posición</span>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <small class="text-muted d-block">Entrenador</small>
-                                <strong>Roberto Sánchez</strong>
+                    <div class="ms-auto text-white text-end d-none d-md-block">
+                        <div class="d-flex gap-3">
+                            <div class="text-center">
+                                <h3 class="fw-bold mb-0">15</h3>
+                                <small class="opacity-75">Victorias</small>
                             </div>
-                            <div class="col-md-3">
-                                <small class="text-muted d-block">Fundado</small>
-                                <strong>2018</strong>
-                            </div>
-                            <div class="col-md-3">
-                                <small class="text-muted d-block">Estadio</small>
-                                <strong>Estadio Central</strong>
-                            </div>
-                            <div class="col-md-3">
-                                <small class="text-muted d-block">Jugadores</small>
-                                <strong>22</strong>
+                            <div class="vr opacity-50"></div>
+                            <div class="text-center">
+                                <h3 class="fw-bold mb-0">48</h3>
+                                <small class="opacity-75">Goles</small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Team Stats -->
-        <div class="row g-4 mb-4">
-            <div class="col-6 col-md-3">
-                <div class="card text-center">
+    <main class="container my-5">
+
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
                     <div class="card-body">
-                        <i class="bi bi-trophy text-warning mb-2" style="font-size: 2rem;"></i>
-                        <h4 class="mb-1">1°</h4>
-                        <small class="text-muted">Posición Actual</small>
+                        <h5 class="fw-bold mb-4">Rendimiento Reciente</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-indicador text-center">
+                                <div class="dot bg-success" title="Victoria">V</div>
+                                <div class="dot bg-success" title="Victoria">V</div>
+                                <div class="dot bg-warning" title="Empate">E</div>
+                                <div class="dot bg-danger" title="Derrota">D</div>
+                                <div class="dot bg-success" title="Victoria">V</div>
+                            </div>
+                            <span class="text-muted small">Últimos 5 partidos</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card text-center">
+
+                <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body">
-                        <i class="bi bi-calendar-event text-success mb-2" style="font-size: 2rem;"></i>
-                        <h4 class="mb-1">5</h4>
-                        <small class="text-muted">Partidos Jugados</small>
+                        <h5 class="fw-bold mb-3">Vitrina de Trofeos</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <div class="trophy-badge" title="Copa Primavera 2023">🏆</div>
+                            <div class="trophy-badge" title="Liga Regional 2022">🥇</div>
+                            <div class="trophy-badge" title="Torneo Relámpago">🎖️</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <i class="bi bi-bullseye text-primary mb-2" style="font-size: 2rem;"></i>
-                        <h4 class="mb-1">12</h4>
-                        <small class="text-muted">Goles a Favor</small>
+
+                <!-- Campo -->
+                <div class="soccer-field-container card border-0 shadow-lg rounded-4 mt-4 overflow-hidden">
+                    <div class="field-header bg-dark p-3 d-flex justify-content-between align-items-center">
+                        <h6 class="text-white mb-0">Disposición Táctica</h6>
+                        <select id="formationSelect" class="form-select form-select-sm w-auto">
+                            <option value="f-442">4-4-2</option>
+                            <option value="f-433">4-3-3</option>
+                            <option value="f-352">3-5-2</option>
+                            <option value="f-343">3-4-3</option>
+                            <option value="f-4231">4-2-3-1</option>
+                            <option value="f-4141">4-1-4-1</option>
+                            <option value="f-2323">2-3-2-3</option>
+                            <option value="f-541">5-4-1</option>
+                        </select>
+                    </div>
+                    
+                    <div class="field">
+                        <div class="line center-line"></div>
+                        <div class="line center-circle"></div>
+                        <div class="line penalty-area-top"></div>
+                        <div class="line penalty-area-bottom"></div>
+                        <div class="line goal-area-top"></div>
+                        <div class="line goal-area-bottom"></div>
+
+                        <div id="playersLayer" class="f-442">
+                            <div class="player gk" data-number="1"><span>Martínez</span></div>
+                            
+                            <div class="player p2" data-number="4"><span>Montiel</span></div>
+                            <div class="player p3" data-number="2"><span>Otamendi</span></div>
+                            <div class="player p4" data-number="6"><span>Pezzella</span></div>
+                            <div class="player p5" data-number="3"><span>Tagliafico</span></div>
+                            
+                            <div class="player p6" data-number="5"><span>De Paul</span></div>
+                            <div class="player p7" data-number="8"><span>Enzo F.</span></div>
+                            <div class="player p8" data-number="7"><span>Mac Allister</span></div>
+                            <div class="player p9" data-number="11"><span>Di María</span></div>
+                            
+                            <div class="player p10" data-number="9"><span>Álvarez</span></div>
+                            <div class="player p11" data-number="10"><span>Messi</span></div>
+                        </div>
                     </div>
                 </div>
+
             </div>
-            <div class="col-6 col-md-3">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <i class="bi bi-shield text-info mb-2" style="font-size: 2rem;"></i>
-                        <h4 class="mb-1">3</h4>
-                        <small class="text-muted">Goles en Contra</small>
+
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="fw-bold mb-0">Plantilla Oficial</h4>
+                        <span class="badge bg-light text-dark border">18 Jugadores</span>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Dorsal</th>
+                                    <th>Jugador</th>
+                                    <th>Posición</th>
+                                    <th>Partidos</th>
+                                    <th>Goles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Player -->
+                                <tr>
+                                    <td class="fw-bold text-primary">1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="player-avatar me-2">N</div>
+                                            <span>Nico  <span class="badge text-bg-success">Cap</span> </span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-success-subtle text-success px-2">Portero</span></td>
+                                    <td>24</td>
+                                    <td class="fw-bold text-success">-2</td>
+                                </tr> <!-- /Player -->
+                                <!-- Player -->
+                                <tr>
+                                    <td class="fw-bold text-primary">2</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="player-avatar me-2">LP</div>
+                                            <span>Leonardo Pérez</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-warning-subtle text-warning px-2">Defensor</span></td>
+                                    <td>24</td>
+                                    <td class="fw-bold text-success">2</td>
+                                </tr> <!-- /Player -->
+                                <!-- Player -->
+                                <tr>
+                                    <td class="fw-bold text-primary">10</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="player-avatar me-2">JS</div>
+                                            <span>Juan Sánchez</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-info-subtle text-info px-2">Mediocampista</span></td>
+                                    <td>24</td>
+                                    <td class="fw-bold text-success">12</td>
+                                </tr> <!-- /Player -->
+                                <tr>
+                                    <td class="fw-bold text-primary">9</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="player-avatar me-2">MV</div>
+                                            <span>Mario Valdez</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-primary-subtle text-primary px-2">Delantero</span></td>
+                                    <td>24</td>
+                                    <td class="fw-bold text-success">16</td>
+                                </tr> <!-- /Player -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Team Tabs -->
-        <div class="card">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                    <li class="nav-item">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#players">
-                            <i class="bi bi-people me-2"></i>Plantilla
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#matches">
-                            <i class="bi bi-calendar-event me-2"></i>Partidos
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#stats">
-                            <i class="bi bi-graph-up me-2"></i>Estadísticas
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#formation">
-                            <i class="bi bi-diagram-3 me-2"></i>Formación
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-body">
-                <div class="tab-content">
-                    <!-- Players Tab -->
-                    <div class="tab-pane fade show active" id="players">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h6 class="mb-0">Plantilla Actual (22 jugadores)</h6>
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addPlayerModal">
-                                <i class="bi bi-person-plus me-2"></i>Agregar Jugador
-                            </button>
-                        </div>
-
-                        <!-- Players by Position -->
-                        <div class="row g-4">
-                            <!-- Porteros -->
-                            <div class="col-12">
-                                <h6 class="text-muted mb-3">🥅 Porteros</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-6 col-lg-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-avatar me-3">1</div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="mb-1">Juan Pérez</h6>
-                                                        <small class="text-muted">28 años • Capitán</small>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
-                                                            <i class="bi bi-three-dots"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="jugador.html">Ver Perfil</a></li>
-                                                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item text-danger" href="#">Remover</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Defensas -->
-                            <div class="col-12">
-                                <h6 class="text-muted mb-3">🛡️ Defensas</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-6 col-lg-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-avatar me-3">2</div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="mb-1">Carlos Ruiz</h6>
-                                                        <small class="text-muted">25 años</small>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
-                                                            <i class="bi bi-three-dots"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
-                                                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item text-danger" href="#">Remover</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-avatar me-3">3</div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="mb-1">Miguel López</h6>
-                                                        <small class="text-muted">23 años</small>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
-                                                            <i class="bi bi-three-dots"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
-                                                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item text-danger" href="#">Remover</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Mediocampistas -->
-                            <div class="col-12">
-                                <h6 class="text-muted mb-3">⚽ Mediocampistas</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-6 col-lg-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-avatar me-3">8</div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="mb-1">Luis Hernández</h6>
-                                                        <small class="text-muted">22 años • 8 asistencias</small>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
-                                                            <i class="bi bi-three-dots"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
-                                                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item text-danger" href="#">Remover</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Delanteros -->
-                            <div class="col-12">
-                                <h6 class="text-muted mb-3">🎯 Delanteros</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-6 col-lg-4">
-                                        <div class="card border-warning">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-avatar me-3">10</div>
-                                                    <div class="flex-grow-1">
-                                                        <h6 class="mb-1">Diego Martínez <i class="bi bi-star-fill text-warning"></i></h6>
-                                                        <small class="text-muted">24 años • 7 goles</small>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
-                                                            <i class="bi bi-three-dots"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="jugador.html">Ver Perfil</a></li>
-                                                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            <li><a class="dropdown-item text-danger" href="#">Remover</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Matches Tab -->
-                    <div class="tab-pane fade" id="matches">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <h6 class="mb-3">Próximos Partidos</h6>
-                                <div class="list-group">
-                                    <div class="list-group-item">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <span class="me-2">🦅</span>
-                                                    <strong>Águilas FC</strong>
-                                                    <span class="mx-3">vs</span>
-                                                    <span class="me-2">🐺</span>
-                                                    <strong>Lobos FC</strong>
-                                                </div>
-                                                <small class="text-muted">
-                                                    <i class="bi bi-calendar me-1"></i>25 Mar 2024, 16:00
-                                                    <i class="bi bi-geo-alt ms-3 me-1"></i>Estadio Central
-                                                </small>
-                                            </div>
-                                            <span class="badge bg-info">Próximo</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <h6 class="mb-3">Resultados Recientes</h6>
-                                <div class="list-group">
-                                    <div class="list-group-item">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <span class="me-2">🦅</span>
-                                                    <strong>Águilas FC</strong>
-                                                    <span class="mx-2 fw-bold text-success">3 - 1</span>
-                                                    <span class="me-2">🐅</span>
-                                                    <strong>Tigres United</strong>
-                                                </div>
-                                                <small class="text-muted">
-                                                    <i class="bi bi-calendar me-1"></i>22 Mar 2024
-                                                    <i class="bi bi-trophy ms-3 me-1"></i>Victoria
-                                                </small>
-                                            </div>
-                                            <span class="badge bg-success">Victoria</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Match History -->
-                        <div class="mt-4">
-                            <h6 class="mb-3">Historial de Partidos</h6>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Fecha</th>
-                                            <th>Rival</th>
-                                            <th>Resultado</th>
-                                            <th>Goleadores</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>22 Mar 2024</td>
-                                            <td>🐅 Tigres United</td>
-                                            <td><span class="fw-bold text-success">3 - 1</span></td>
-                                            <td>Diego M. (2), Luis H.</td>
-                                            <td><span class="badge bg-success">Victoria</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>18 Mar 2024</td>
-                                            <td>🦁 Leones FC</td>
-                                            <td><span class="fw-bold text-warning">1 - 1</span></td>
-                                            <td>Diego M.</td>
-                                            <td><span class="badge bg-warning">Empate</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stats Tab -->
-                    <div class="tab-pane fade" id="stats">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <h6 class="mb-3">Estadísticas Ofensivas</h6>
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-primary">12</h4>
-                                            <small class="text-muted">Goles a favor</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-success">2.4</h4>
-                                            <small class="text-muted">Goles por partido</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-warning">8</h4>
-                                            <small class="text-muted">Asistencias</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-info">65%</h4>
-                                            <small class="text-muted">Posesión promedio</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <h6 class="mb-3">Estadísticas Defensivas</h6>
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-danger">3</h4>
-                                            <small class="text-muted">Goles en contra</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-success">0.6</h4>
-                                            <small class="text-muted">Goles recibidos/partido</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-warning">2</h4>
-                                            <small class="text-muted">Vallas invictas</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-center">
-                                            <h4 class="text-info">+9</h4>
-                                            <small class="text-muted">Diferencia de gol</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Top Performers -->
-                        <div class="mt-4">
-                            <h6 class="mb-3">Mejores Jugadores</h6>
-                            <div class="row g-3">
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <div class="user-avatar mx-auto mb-2">10</div>
-                                            <h6 class="mb-1">Diego Martínez</h6>
-                                            <small class="text-muted">Máximo Goleador</small>
-                                            <div class="mt-2">
-                                                <span class="badge bg-warning">7 goles</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <div class="user-avatar mx-auto mb-2">8</div>
-                                            <h6 class="mb-1">Luis Hernández</h6>
-                                            <small class="text-muted">Más Asistencias</small>
-                                            <div class="mt-2">
-                                                <span class="badge bg-info">8 asistencias</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card text-center">
-                                        <div class="card-body">
-                                            <div class="user-avatar mx-auto mb-2">1</div>
-                                            <h6 class="mb-1">Juan Pérez</h6>
-                                            <small class="text-muted">Mejor Portero</small>
-                                            <div class="mt-2">
-                                                <span class="badge bg-success">2 vallas invictas</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Formation Tab -->
-                    <div class="tab-pane fade" id="formation">
-                        <div class="text-center mb-4">
-                            <h6>Formación Actual: 4-3-3</h6>
-                            <p class="text-muted">Formación ofensiva con énfasis en los extremos</p>
-                        </div>
-
-                        <!-- Soccer Field -->
-                        <div class="soccer-field mx-auto" style="max-width: 600px; height: 400px; background: linear-gradient(to bottom, #4ade80 0%, #22c55e 50%, #4ade80 100%); border: 3px solid white; border-radius: 10px; position: relative; overflow: hidden;">
-                            <!-- Field Lines -->
-                            <div style="position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: white;"></div>
-                            <div style="position: absolute; top: 50%; left: 50%; width: 2px; height: 100%; background: white; transform: translateX(-50%);"></div>
-                            <div style="position: absolute; top: 50%; left: 50%; width: 120px; height: 120px; border: 2px solid white; border-radius: 50%; transform: translate(-50%, -50%);"></div>
-                            
-                            <!-- Players -->
-                            <!-- Goalkeeper -->
-                            <div class="player-position" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">1</div>
-                                <small class="d-block text-white mt-1">Juan P.</small>
-                            </div>
-                            
-                            <!-- Defenders -->
-                            <div class="player-position" style="position: absolute; bottom: 80px; left: 15%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">2</div>
-                                <small class="d-block text-white mt-1">Carlos R.</small>
-                            </div>
-                            <div class="player-position" style="position: absolute; bottom: 80px; left: 35%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">3</div>
-                                <small class="d-block text-white mt-1">Miguel L.</small>
-                            </div>
-                            <div class="player-position" style="position: absolute; bottom: 80px; right: 35%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">4</div>
-                                <small class="d-block text-white mt-1">Pedro M.</small>
-                            </div>
-                            <div class="player-position" style="position: absolute; bottom: 80px; right: 15%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">5</div>
-                                <small class="d-block text-white mt-1">José G.</small>
-                            </div>
-                            
-                            <!-- Midfielders -->
-                            <div class="player-position" style="position: absolute; bottom: 180px; left: 25%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">6</div>
-                                <small class="d-block text-white mt-1">Ana S.</small>
-                            </div>
-                            <div class="player-position" style="position: absolute; bottom: 180px; left: 50%; transform: translateX(-50%);">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">8</div>
-                                <small class="d-block text-white mt-1">Luis H.</small>
-                            </div>
-                            <div class="player-position" style="position: absolute; bottom: 180px; right: 25%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">7</div>
-                                <small class="d-block text-white mt-1">Mario F.</small>
-                            </div>
-                            
-                            <!-- Forwards -->
-                            <div class="player-position" style="position: absolute; bottom: 280px; left: 20%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">11</div>
-                                <small class="d-block text-white mt-1">Alex R.</small>
-                            </div>
-                            <div class="player-position" style="position: absolute; bottom: 280px; left: 50%; transform: translateX(-50%);">
-                                <div class="user-avatar border-warning" style="width: 40px; height: 40px; font-size: 0.8rem; border-width: 3px !important;">10</div>
-                                <small class="d-block text-white mt-1"><strong>Diego M.</strong></small>
-                            </div>
-                            <div class="player-position" style="position: absolute; bottom: 280px; right: 20%;">
-                                <div class="user-avatar" style="width: 40px; height: 40px; font-size: 0.8rem;">9</div>
-                                <small class="d-block text-white mt-1">Roberto C.</small>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 text-center">
-                            <button class="btn btn-outline-primary me-2">
-                                <i class="bi bi-pencil me-2"></i>Editar Formación
-                            </button>
-                            <button class="btn btn-outline-secondary">
-                                <i class="bi bi-download me-2"></i>Exportar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Player Modal -->
-    <div class="modal fade" id="addPlayerModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="bi bi-person-plus me-2"></i>Agregar Jugador al Equipo
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="addPlayerForm">
-                        <div class="mb-3">
-                            <label class="form-label">Buscar Jugador</label>
-                            <input type="text" class="form-control" placeholder="Nombre del jugador...">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Número de Camiseta</label>
-                            <input type="number" class="form-control" min="1" max="99">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Posición en el Equipo</label>
-                            <select class="form-select">
-                                <option value="">Seleccionar posición</option>
-                                <option value="portero">Portero</option>
-                                <option value="defensa">Defensa</option>
-                                <option value="mediocampo">Mediocampo</option>
-                                <option value="delantero">Delantero</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="addPlayerToTeam()">
-                        <i class="bi bi-check-circle me-2"></i>Agregar al Equipo
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-5 mt-5">
@@ -749,30 +306,7 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script>
-        function editTeam() {
-            alert('Función de edición en desarrollo');
-        }
-        
-        function shareTeam() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Águilas FC',
-                    text: 'Mira este equipo en TorneoManager Pro',
-                    url: window.location.href
-                });
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Enlace copiado al portapapeles');
-            }
-        }
+    <script src="js/scripts.js"></script>
 
-        function addPlayerToTeam() {
-            const form = document.getElementById('addPlayerForm');
-            alert('Jugador agregado al equipo exitosamente!');
-            bootstrap.Modal.getInstance(document.getElementById('addPlayerModal')).hide();
-            form.reset();
-        }
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'982675ccd569b861',t:'MTc1ODQyNTE3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
